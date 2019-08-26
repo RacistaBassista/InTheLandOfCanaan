@@ -1,0 +1,439 @@
+namespace = lastofthevikingrs
+
+country_event = {
+	id = lastofthevikingrs.1
+	title = lastofthevikingrs.1.t
+	desc = lastofthevikingrs.1.d
+	picture = SHIP_SAILING_eventPicture
+
+	trigger = {
+		NOT = {
+			has_country_modifier = vikingr_protector
+			has_country_modifier = vikingr_victim
+			is_year = 1446
+		}
+		OR = {
+			culture_group = iberian
+			culture_group = latin
+			primary_culture = turkish
+			primary_culture = greek
+			primary_culture = al_misr_arabic
+			primary_culture = tunisian
+			primary_culture = moroccan
+			primary_culture = algerian
+			tag = SYR
+			tag = TRP
+			tag = ARM
+			tag = ALB
+			tag = BUL
+			tag = CRO
+			tag = MJO
+			tag = CYP
+			tag = MAM
+			tag = TOU
+			tag = DAU
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 6
+	}
+	
+	option = {
+		name = lastofthevikingrs.1.a
+		if = {
+			limit = { tag = MJO }
+			add_country_modifier = {
+				name = "vikingr_protector"
+				duration = -1
+			}
+			else = {	
+				add_country_modifier = {
+					name = "vikingr_victim"
+					duration = -1
+				}
+			}
+		}
+		
+	}
+}
+
+country_event = {
+	id = lastofthevikingrs.2
+	title = lastofthevikingrs.2.t
+	desc = lastofthevikingrs.2.d
+	picture = NOT_DISCIPLINED_SOLDIERS_eventPicture
+
+	trigger = {
+		has_country_modifier = vikingr_victim
+	}
+
+	mean_time_to_happen = {
+		months = 1200
+		modifier = {
+			factor = 2
+			is_year = 1500
+		}
+		modifier = {
+			factor = 0.5
+			any_owned_province = {
+				development = 10
+			}
+		}
+		modifier = {
+			factor = 0.5
+			any_owned_province = {
+				development = 15
+			}
+		}
+		modifier = {
+			factor = 0.5
+			any_owned_province = {
+				development = 20
+			}
+		}
+		modifier = {
+			factor = 0.5
+			any_owned_province = {
+				development = 25
+			}
+		}
+		modifier = {
+			factor = 0.5
+			any_owned_province = {
+				development = 30
+			}
+		}
+		modifier = {
+			factor = 0.5
+			any_owned_province = {
+				development = 35
+			}
+		}
+		modifier = {
+			factor = 0.5
+			any_owned_province = {
+				development = 40
+			}
+		}
+		modifier = {
+			factor = 0.5
+			any_owned_province = {
+				development = 45
+			}
+		}
+		modifier = {
+			factor = 0.5
+			any_owned_province = {
+				development = 50
+			}
+		}
+		#Karma-Influenced Event
+		modifier = {
+			factor = 0.9
+			NOT = {
+				karma = -10
+			}
+		}
+		modifier = {
+			factor = 0.9
+			NOT = {
+				karma = -20
+			}
+		}
+		modifier = {
+			factor = 0.9
+			NOT = {
+				karma = -30
+			}
+		}
+		modifier = {
+			factor = 0.9
+			NOT = {
+				karma = -40
+			}
+		}
+		modifier = {
+			factor = 0.9
+			NOT = {
+				karma = -50
+			}
+		}
+		modifier = {
+			factor = 0.9
+			NOT = {
+				karma = -60
+			}
+		}
+		modifier = {
+			factor = 0.9
+			NOT = {
+				karma = -70
+			}
+		}
+		modifier = {
+			factor = 0.9
+			NOT = {
+				karma = -80
+			}
+		}
+		modifier = {
+			factor = 0.9
+			NOT = {
+				karma = -90
+			}
+		}
+		modifier = {
+			factor = 1.1
+			karma = 10
+		}
+		modifier = {
+			factor = 1.1
+			karma = 20
+		}
+		modifier = {
+			factor = 1.1
+			karma = 30
+		}
+		modifier = {
+			factor = 1.1
+			karma = 40
+		}
+		modifier = {
+			factor = 1.1
+			karma = 50
+		}
+		modifier = {
+			factor = 1.1
+			karma = 60
+		}
+		modifier = {
+			factor = 1.1
+			karma = 70
+		}
+		modifier = {
+			factor = 1.1
+			karma = 80
+		}
+		modifier = {
+			factor = 1.1
+			karma = 90
+		}
+	}
+	
+	option = {
+		name = lastofthevikingrs.2.a
+		if = {
+			limit = {
+				MJO = {
+					has_country_modifier = vikingr_protector
+				}
+			}
+			MJO = {
+				country_event = {
+					id = lastofthevikingrs.3
+				}
+			}
+		}
+		if = {
+			limit = {
+				CYP = {
+					has_country_modifier = vikingr_protector
+				}
+			}
+			CYP = {
+				country_event = {
+					id = lastofthevikingrs.3
+				}
+			}
+		}
+		add_years_of_income = -1
+		add_devastation = 25
+		random_list = {
+			5 = { kill_ruler = yes }
+			10 = { kill_leader = yes }
+		}
+	}
+	
+	option = {
+		name = lastofthevikingrs.2.b
+		if = {
+			limit = {
+				MJO = {
+					has_country_modifier = vikingr_protector
+				}
+			}
+			MJO = {
+				declare_war_with_cb = {	
+					who = ROOT
+					casus_belli = cb_guarantee
+				}
+			}
+		}
+		if = {
+			limit = {
+				CYP = {
+					has_country_modifier = vikingr_protector
+				}
+			}
+			CYP = {
+				declare_war_with_cb = {	
+					who = ROOT
+					casus_belli = cb_guarantee
+				}
+			}
+		}
+		add_devastation = 50
+		random_list = {
+			10 = { kill_ruler = yes }
+			20 = { kill_leader = yes }
+		}
+	}
+}
+
+country_event = {
+	id = lastofthevikingrs.3
+	title = lastofthevikingrs.3.t
+	desc = lastofthevikingrs.3.d
+	picture = ECONOMY_eventPicture
+
+	is_triggered_only = yes
+
+	option = {
+		name = lastofthevikingrs.3.a
+		if = {
+			limit = {
+				tag = MJO
+			}
+			add_years_of_income = 0.25
+		}
+		if = {
+			limit = {
+				tag = CYP
+			}
+			add_years_of_income = 1
+		}
+		add_prestige = 10
+	}
+}
+
+country_event = {
+	id = lastofthevikingrs.4
+	title = lastofthevikingrs.4.t
+	desc = lastofthevikingrs.4.d
+	picture = PIRATE_FORT_eventPicture
+
+	trigger = {
+		OR = {
+			has_country_modifier = vikingr_protector
+			has_country_modifier = vikingr_victim
+		}
+	}
+
+	mean_time_to_happen = {
+		months = 1584
+		modifier = {
+			factor = 999
+			NOT = {
+				is_year = 1500
+			}
+		}
+	}
+
+	option = {
+		name = lastofthevikingrs.4.a
+		if = {
+			limit = {
+				has_country_modifier = vikingr_protector
+			}
+			remove_country_modifier = vikingr_protector
+		}
+		if = {
+			limit = {
+				has_country_modifier = vikingr_victim
+			}
+			remove_country_modifier = vikingr_victim
+		}
+		every_known_country = {
+			limit = {
+				OR = {
+					has_country_modifier = vikingr_protector
+					has_country_modifier = vikingr_victim
+				}
+				country_event = {
+					id = lastofthevikingrs.4
+				}
+			}
+		}
+		add_stability = 1
+	}
+}
+
+country_event = {
+	id = lastofthevikingrs.6
+	title = lastofthevikingrs.6.t
+	desc = lastofthevikingrs.6.d
+	picture = BAD_WITH_MONARCH_eventPicture
+
+	trigger = {
+		tag = MJO
+		has_country_modifier = vikingr_protector
+		OR = {
+			is_bankrupt = yes
+			NOT = {
+				army_size_percentage = 0.5
+			}
+			overextension_percentage = 0.75
+			has_disaster = peasants_war
+			has_disaster = civil_war
+			has_disaster = estate_nobility_disaster
+			has_disaster = estate_burghers_disaster
+			has_disaster = estate_church_disaster
+		}
+	}
+
+	mean_time_to_happen = {
+		months = 12
+	}
+	
+	fire_only_once = yes
+
+	option = {
+		name = lastofthevikingrs.6.a
+		remove_country_modifier = vikingr_protector
+		if = {
+			limit = {
+				CYP = {
+					exists = yes
+					religion = norse_pagan_reformed
+				}
+			}
+			CYP = {
+				country_event = {
+					id = lastofthevikingrs.7
+				}
+			}
+		}
+		add_prestige = -20
+	}
+}
+
+country_event = {
+	id = lastofthevikingrs.7
+	title = lastofthevikingrs.7.t
+	desc = lastofthevikingrs.7.d
+	picture = NAVAL_MILITARY_eventPicture
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = {
+		name = lastofthevikingrs.7.a
+		add_prestige = 20
+		add_country_modifier = {
+			name = "vikingr_protector"
+			duration = -1
+		}
+	}
+}
