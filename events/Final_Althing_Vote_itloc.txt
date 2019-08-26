@@ -1,0 +1,340 @@
+namespace = finalalthingvote
+
+country_event = {
+	id = finalalthingvote.1
+	title = finalalthingvote.1.t
+	desc = finalalthingvote.1.d
+	picture = REFORM_eventPicture
+
+	is_triggered_only = yes
+
+	option = {
+		name = finalalthingvote.1.a
+		add_prestige = -20
+		add_country_modifier = {
+			name = "annexation_vote_anticipation"
+			duration = 365
+		}
+	}
+}
+
+country_event = {
+	id = finalalthingvote.2
+	title = finalalthingvote.2.t
+	desc = finalalthingvote.2.d
+	picture = REFORM_eventPicture
+
+	is_triggered_only = yes
+
+	option = {
+		name = finalalthingvote.2.a
+		ai_chance = { factor = 0.67 }
+	}
+	option = {
+		name = finalalthingvote.2.b
+		ai_chance = { factor = 0.33 }
+		custom_tooltip = finalalthingvote.2.b.tt
+		add_years_of_income = -0.5
+		if = {
+			limit = {
+				tag = NOR
+			}
+			ICE = {
+				add_country_modifier = {
+					name = norway_bribes
+					duration = 365
+				}
+			}
+		}
+		if = {
+			limit = {
+				tag = DAN
+			}
+			ICE = {
+				add_country_modifier = {
+					name = denmark_bribes
+					duration = 365
+				}
+			}
+		}
+		if = {
+			limit = {
+				tag = SWE
+			}
+			ICE = {
+				add_country_modifier = {
+					name = sweden_bribes
+					duration = 365
+				}
+			}
+		}
+		if = {
+			limit = {
+				tag = IRE
+			}
+			ICE = {
+				add_country_modifier = {
+					name = ireland_bribes
+					duration = 365
+				}
+			}
+		}
+		if = {
+			limit = {
+				tag = SCO
+			}
+			ICE = {
+				add_country_modifier = {
+					name = scotland_bribes
+					duration = 365
+				}
+			}
+		}
+		if = {
+			limit = {
+				tag = ENG
+			}
+			ICE = {
+				add_country_modifier = {
+					name = england_bribes
+					duration = 365
+				}
+			}
+		}
+	}
+
+	option = {
+		name = finalalthingvote.2.c
+		ai_chance = { factor = 0 }
+		custom_tooltip = finalalthingvote.2.c.tt
+		add_years_of_income = -1
+		if = {
+			limit = {
+				tag = NOR
+			}
+			ICE = {
+				add_country_modifier = {
+					name = hefty_norway_bribes
+					duration = 365
+				}
+			}
+		}
+		if = {
+			limit = {
+				tag = DAN
+			}
+			ICE = {
+				add_country_modifier = {
+					name = hefty_denmark_bribes
+					duration = 365
+				}
+			}
+		}
+		if = {
+			limit = {
+				tag = SWE
+			}
+			ICE = {
+				add_country_modifier = {
+					name = hefty_sweden_bribes
+					duration = 365
+				}
+			}
+		}
+		if = {
+			limit = {
+				tag = IRE
+			}
+			ICE = {
+				add_country_modifier = {
+					name = hefty_ireland_bribes
+					duration = 365
+				}
+			}
+		}
+		if = {
+			limit = {
+				tag = SCO
+			}
+			ICE = {
+				add_country_modifier = {
+					name = hefty_scotland_bribes
+					duration = 365
+				}
+			}
+		}
+		if = {
+			limit = {
+				tag = ENG
+			}
+			ICE = {
+				add_country_modifier = {
+					name = hefty_england_bribes
+					duration = 365
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = finalalthingvote.3
+	title = finalalthingvote.3.t
+	desc = finalalthingvote.3.d
+	picture = LIBERUM_VETO_eventPicture
+
+	major = yes
+
+	trigger = {
+		has_country_modifier = final_althing_vote
+		NOT = {
+			has_country_modifier = annexation_vote_anticipation
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	option = {
+		name = finalalthingvote.3.a
+		ai_chance = { 
+			factor = 0.35
+			modifier = {
+				has_country_modifier = norway_bribes
+				factor = 2
+			}
+			modifier = {
+				has_country_modifier = hefty_norway_bribes
+				factor = 3
+			}
+		}
+		NOR = {
+			country_event = {
+				id = finalalthingvote.4
+			}
+		}
+	}
+	
+	option = {
+		name = finalalthingvote.3.b
+		ai_chance = { 
+			factor = 0.2
+			modifier = {
+				has_country_modifier = denmark_bribes
+				factor = 2
+			}
+			modifier = {
+				has_country_modifier = hefty_denmark_bribes
+				factor = 3
+			}
+		}
+		DAN = {
+			country_event = {
+				id = finalalthingvote.4
+			}
+		}
+	}
+
+	option = {
+		name = finalalthingvote.3.c
+		ai_chance = { 
+			factor = 0.15
+			modifier = {
+				has_country_modifier = sweden_bribes
+				factor = 2
+			}
+			modifier = {
+				has_country_modifier = hefty_sweden_bribes
+				factor = 3
+			}
+		}
+		SWE = {
+			country_event = {
+				id = finalalthingvote.4
+			}
+		}
+	}
+
+	option = {
+		name = finalalthingvote.3.da
+		ai_chance = { 
+			factor = 0.15
+			modifier = {
+				has_country_modifier = ireland_bribes
+				factor = 2
+			}
+			modifier = {
+				has_country_modifier = hefty_ireland_bribes
+				factor = 3
+			}
+		}
+		IRE = {
+			country_event = {
+				id = finalalthingvote.4
+			}
+		}
+	}
+
+	option = {
+		name = finalalthingvote.3.e
+		ai_chance = { 
+			factor = 0.1
+			modifier = {
+				has_country_modifier = scotland_bribes
+				factor = 2
+			}
+			modifier = {
+				has_country_modifier = hefty_scotland_bribes
+				factor = 3
+			}
+		}
+		SCO = {
+			country_event = {
+				id = finalalthingvote.4
+			}
+		}
+	}
+
+	option = {
+		name = finalalthingvote.3.f
+		ai_chance = { 
+			factor = 0.05
+			modifier = {
+				has_country_modifier = england_bribes
+				factor = 2
+			}
+			modifier = {
+				has_country_modifier = hefty_england_bribes
+				factor = 3
+			}
+		}
+		ENG = {
+			country_event = {
+				id = finalalthingvote.4
+			}
+		}
+	}
+}
+
+country_event = {
+	id = finalalthingvote.4
+	title = finalalthingvote.4.t
+	desc = finalalthingvote.4.d
+	picture = FEAST_eventPicture
+
+	is_triggered_only = yes
+
+	option = {
+		name = finalalthingvote.4.a
+		add_prestige = 20
+		inherit = ICE
+		add_accepted_culture = icelandic
+		370 = {
+			add_local_autonomy = 75
+		}
+		371 = {
+			add_local_autonomy = 75
+		}
+	}
+}

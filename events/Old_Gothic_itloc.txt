@@ -1,0 +1,386 @@
+namespace = oldgothic
+
+country_event = {
+	id = 9947
+	title = "EVTNAME9947"
+	desc = "EVTDESC9947"
+	picture = HORDE_ON_HORSEBACK_eventPicture
+
+	trigger = {
+		religion = old_gothic
+		NOT = {
+			has_country_modifier = big_tiddy_goth_gf
+		}
+		OR = {
+			has_personal_deity = teiws
+			has_personal_deity = fairguneis
+			has_personal_deity = gaut
+			has_personal_deity = enguz
+			has_personal_deity = nerthuz
+			has_personal_deity = donaws
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	option = {
+		name = "EVTOPTA9947"
+		add_country_modifier = {
+			name = "big_tiddy_goth_gf"
+			duration = -1
+		}
+	}
+}
+
+country_event = {
+	id = 9948
+	title = "EVTNAME9948"
+	desc = "EVTDESC9948"
+	picture = PRAYING_eventPicture
+
+	trigger = {
+		religion = old_gothic
+		has_country_modifier = big_tiddy_goth_gf 
+		is_year = 1448
+		is_at_war = yes
+		any_known_country = {
+			war_with = ROOT
+			NOT = {
+				OR = {
+					has_country_modifier = teiws_curse
+					has_country_modifier = fairguneis_curse
+					has_country_modifier = gaut_curse
+					has_country_modifier = enguz_curse
+					has_country_modifier = nerthuz_curse
+					has_country_modifier = donaws_curse
+				}
+			}
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	option = {
+		name = "EVTOPTA9948"
+		ai_chance = { factor = 1 }
+		add_country_modifier = {
+			name = "curse_cooldown"
+			duration = 365
+		}
+		every_known_country = {
+			limit = { 
+				war_with = ROOT 
+				NOT = {
+					has_country_modifier = teiws_curse
+					has_country_modifier = fairguneis_curse
+					has_country_modifier = gaut_curse
+					has_country_modifier = enguz_curse
+					has_country_modifier = nerthuz_curse
+					has_country_modifier = donaws_curse
+				}
+			}
+			if = {
+				limit = {
+					ROOT = {
+						has_personal_deity = teiws
+					}
+				}
+				country_event = {
+					id = 9949
+				}
+			}
+			if = {
+				limit = {
+					ROOT = {
+						has_personal_deity = fairguneis
+					}
+				}
+				country_event = {
+					id = 9950
+				}
+			}
+			if = {
+				limit = {
+					ROOT = {
+						has_personal_deity = gaut
+					}
+				}
+				country_event = {
+					id = 9951
+				}
+			}
+			if = {
+				limit = {
+					ROOT = {
+						has_personal_deity = enguz
+					}
+				}
+				country_event = {
+					id = 9952
+				}
+			}
+			if = {
+				limit = {
+					ROOT = {
+						has_personal_deity = nerthuz
+					}
+				}
+				country_event = {
+					id = 9953
+				}
+			}
+			if = {
+				limit = {
+					ROOT = {
+						has_personal_deity = donaws
+					}
+				}
+				country_event = {
+					id = 9954
+				}
+			}
+
+		}
+	}
+}
+
+country_event = {
+	id = 9949
+	title = "EVTNAME9949"
+	desc = "EVTDESC9949"
+	picture = PLAGUE_eventPicture
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTA9949"
+		add_country_modifier = {
+			name = "teiws_curse"
+			duration = 3650
+		}
+	}
+}
+
+country_event = {
+	id = 9950
+	title = "EVTNAME9950"
+	desc = "EVTDESC9950"
+	picture = PLAGUE_eventPicture
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTA9949"
+		add_country_modifier = {
+			name = "fairguneis_curse"
+			duration = 3650
+		}
+	}
+}
+
+country_event = {
+	id = 9951
+	title = "EVTNAME9951"
+	desc = "EVTDESC9951"
+	picture = PLAGUE_eventPicture
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTA9949"
+		add_country_modifier = {
+			name = "gaut_curse"
+			duration = 3650
+		}
+	}
+}
+
+country_event = {
+	id = 9952
+	title = "EVTNAME9952"
+	desc = "EVTDESC9952"
+	picture = PLAGUE_eventPicture
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTA9949"
+		add_country_modifier = {
+			name = "enguz_curse"
+			duration = 3650
+		}
+	}
+}
+
+country_event = {
+	id = 9953
+	title = "EVTNAME9953"
+	desc = "EVTDESC9953"
+	picture = PLAGUE_eventPicture
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTA9949"
+		add_country_modifier = {
+			name = "nerthuz_curse"
+			duration = 3650
+		}
+	}
+}
+
+country_event = {
+	id = 9954
+	title = "EVTNAME9954"
+	desc = "EVTDESC9954"
+	picture = PLAGUE_eventPicture
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTA9954"
+		add_country_modifier = {
+			name = "donaws_curse"
+			duration = 3650
+		}
+	}
+}
+
+country_event = {
+	id = oldgothic.9
+	title = oldgothic.9.t
+	desc = oldgothic.9.d
+	picture = PLAGUE_eventPicture
+	
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTA9949"
+		add_country_modifier = {
+			name = "cursed_placeholder"
+			duration = 3650
+		}
+	}
+}
+
+country_event = {
+	id = oldgothic.10
+	title = oldgothic.10.t
+	desc = oldgothic.10.d
+	picture = NOT_DISCIPLINED_SOLDIERS_eventPicture
+
+	trigger = {
+		tag = SAX
+		religion = old_gothic
+		SIL = {
+			exists = no
+		}
+		OR = {
+			TRA = {
+				AND = {
+					religion = slavic
+					at_war = no
+				}
+			}
+			RUS = {
+				religion = slavic
+			}
+			AND = {
+				is_year = 1545
+				BOS = {
+					religion = slavic
+				}
+				SER = {
+					religion = slavic
+				}
+			}
+		}
+	}
+
+	mean_time_to_happen = {
+		months = 60
+	}
+
+	major = yes
+	
+	option = {
+		name = oldgothic.10.a
+		ai_chance = { factor = 0.4 }
+		every_owned_province = {
+			limit = {
+				culture = schlesian
+				religion = slavic
+			}
+			cede_province = SIL
+		}
+		SIL = {
+			change_government = tribal
+			add_reform = tribal_federation
+			set_government_rank = 2
+		}
+		create_alliance = SIL
+	}
+	
+	option = {
+		name = oldgothic.10.b
+		ai_chance = { factor = 0.4 }
+		every_owned_province = {
+			limit = {
+				culture = schlesian
+				religion = slavic
+			}
+			cede_province = SIL
+		}
+		create_vassal = SIL
+		SIL = {
+			change_government = tribal
+			add_reform = tribal_federation
+			set_government_rank = 2
+		}
+		SIL = {
+			add_opinion_modifier = {
+				who = SAX
+				modifier = opinion_invasion
+			}
+		}
+	}
+
+	option = {
+		name = oldgothic.10.c
+		ai_chance = { factor = 0.2 }
+		random_owned_province = {
+			limit = {
+				culture = schlesian
+				religion = slavic
+			}
+			spawn_rebels = {
+				type = nationalist_rebels
+				size = 3
+			}
+		}
+		random_owned_province = {
+			limit = {
+				culture = schlesian
+				religion = slavic
+			}
+			spawn_rebels = {
+				type = nationalist_rebels
+				size = 3
+			}
+		}
+		random_owned_province = {
+			limit = {
+				culture = schlesian
+				religion = slavic
+			}
+			spawn_rebels = {
+				type = nationalist_rebels
+				size = 3
+			}
+		}
+	}
+}

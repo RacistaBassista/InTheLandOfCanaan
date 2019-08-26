@@ -1,0 +1,7 @@
+########################################
+# Major Flavor Events                  #
+########################################
+
+namespace = flavor_per
+normal_or_historical_nations = yes
+

@@ -1,0 +1,703 @@
+namespace = greecebuddha
+
+country_event = {
+	id = greecebuddha.1
+	title = greecebuddha.1.t
+	desc = greecebuddha.1.d
+	picture = IMPORTANT_STATUE_eventPicture
+
+	trigger = {
+		tag = BYZ
+		religion = buddhism
+		NOT = {
+			has_country_modifier = kornelios
+		}
+	}
+
+	mean_time_to_happen = {
+		months = 6
+	}
+
+	option = {
+		name = greecebuddha.1.a
+		add_country_modifier = {
+			name = "kornelios"
+			duration = -1
+		}
+	}
+}
+
+country_event = {
+	id = greecebuddha.2
+	title = greecebuddha.2.t
+	desc = greecebuddha.2.d
+	picture = STREET_SPEECH_eventPicture
+
+	trigger = {
+		has_country_modifier = kornelios
+		any_owned_province = {
+			culture = greek
+			has_estate = estate_church
+			NOT = {
+				OR = {
+					has_province_modifier = kornelian_zeus
+					has_province_modifier = kornelian_athena
+					has_province_modifier = kornelian_ares
+					has_province_modifier = kornelian_dionysus
+					has_province_modifier = kornelian_artemis
+					has_province_modifier = kornelian_aphrodite
+				}
+			}
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	option = {
+		name = greecebuddha.2.a
+		random_owned_province = {
+			limit = {
+				culture = greek
+				has_estate = estate_church
+				NOT = {
+					OR = {
+						has_province_modifier = kornelian_zeus
+						has_province_modifier = kornelian_athena
+						has_province_modifier = kornelian_ares
+						has_province_modifier = kornelian_dionysus
+						has_province_modifier = kornelian_artemis
+						has_province_modifier = kornelian_aphrodite
+					}
+				}
+			}
+			add_province_modifier = {
+				name = "kornelian_zeus"
+				duration = -1
+			}
+		}
+	}
+
+	option = {
+		name = greecebuddha.2.b
+		random_owned_province = {
+			limit = {
+				culture = greek
+				has_estate = estate_church
+				NOT = {
+					OR = {
+						has_province_modifier = kornelian_zeus
+						has_province_modifier = kornelian_athena
+						has_province_modifier = kornelian_ares
+						has_province_modifier = kornelian_dionysus
+						has_province_modifier = kornelian_artemis
+						has_province_modifier = kornelian_aphrodite					
+					}
+				}
+			}
+			add_province_modifier = {
+				name = "kornelian_dionysus"
+				duration = -1
+			}
+		}
+	}
+
+	option = {
+		name = greecebuddha.2.c
+		random_owned_province = {
+			limit = {
+				culture = greek
+				has_estate = estate_church
+				NOT = {
+					OR = {
+						has_province_modifier = kornelian_zeus
+						has_province_modifier = kornelian_athena
+						has_province_modifier = kornelian_ares
+						has_province_modifier = kornelian_dionysus
+						has_province_modifier = kornelian_artemis
+						has_province_modifier = kornelian_aphrodite
+					}
+				}
+			}
+			add_province_modifier = {
+				name = "kornelian_ares"
+				duration = -1
+			}
+		}
+	}
+
+	option = {
+		name = greecebuddha.2.da
+		random_owned_province = {
+			limit = {
+				culture = greek
+				has_estate = estate_church
+				NOT = {
+					OR = {
+						has_province_modifier = kornelian_zeus
+						has_province_modifier = kornelian_athena
+						has_province_modifier = kornelian_ares
+						has_province_modifier = kornelian_dionysus
+						has_province_modifier = kornelian_artemis
+						has_province_modifier = kornelian_aphrodite					
+					}
+				}
+			}
+			add_province_modifier = {
+				name = "kornelian_athena"
+				duration = -1
+			}
+		}
+	}
+
+	option = {
+		name = greecebuddha.2.e
+		random_owned_province = {
+			limit = {
+				culture = greek
+				has_estate = estate_church
+				NOT = {
+					OR = {
+						has_province_modifier = kornelian_zeus
+						has_province_modifier = kornelian_athena
+						has_province_modifier = kornelian_ares
+						has_province_modifier = kornelian_dionysus
+						has_province_modifier = kornelian_artemis
+						has_province_modifier = kornelian_aphrodite
+					}
+				}
+			}
+			add_province_modifier = {
+				name = "kornelian_artemis"
+				duration = -1
+			}
+		}
+	}
+
+	option = {
+		name = greecebuddha.2.f
+		random_owned_province = {
+			limit = {
+				culture = greek
+				has_estate = estate_church
+				NOT = {
+					OR = {
+						has_province_modifier = kornelian_zeus
+						has_province_modifier = kornelian_athena
+						has_province_modifier = kornelian_ares
+						has_province_modifier = kornelian_dionysus
+						has_province_modifier = kornelian_artemis
+						has_province_modifier = kornelian_aphrodite					
+					}
+				}
+			}
+			add_province_modifier = {
+				name = "kornelian_aphrodite"
+				duration = -1
+			}
+		}
+	}
+}
+
+namespace = theblackprince
+
+country_event = {
+	id = 9961
+	title = "EVTNAME9961"
+	desc = "EVTDESC9961"
+	picture = SIEGE_eventPicture
+
+	trigger = {
+		tag = BUL
+		government = republic
+		religion = mahayana
+		NOT = {
+			is_year = 1459
+		}
+		OR = {
+			AND = {
+				war_exhaustion = 3
+				NOT = {
+					stability = 3
+				}
+			}
+			NOT = {
+				stability = 0
+			}
+		}
+		
+	}
+
+	mean_time_to_happen = {
+		months = 1
+	}
+	
+	fire_only_once = yes
+
+	option = {
+		name = "EVTOPTA9961"
+		ai_chance = { factor = 0.33 }
+		change_government = monarchy
+		add_government_reform = feudalism_reform
+		change_religion = tengri_pagan_reformed
+		add_stability = -1
+		define_ruler = {
+			name = "Pyotr III"
+			dynasty = "Bogatyr"
+			adm = 4
+			dip = 0
+			mil = 0
+			birth_date = 1423.12.1
+		}
+		random_owned_province = {
+			spawn_rebels = {
+				type = anti_tax_rebels
+				size = 3
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTB9961"
+		ai_chance = { factor = 0.67}
+		random_owned_province = {
+			limit = {
+				religion = tengri_pagan_reformed
+			}
+			spawn_rebels = {
+				type = bogatyrite_rebels
+				size = 2
+				name = "Vladimir Andreikov"
+			}
+		}
+		random_owned_province = {
+			limit = {
+				religion = tengri_pagan_reformed
+			}
+			spawn_rebels = {
+				type = bogatyrite_rebels
+				size = 2
+				name = "Andrei Domogarov"
+			}
+		}
+	}
+}
+	
+country_event = {
+	id = theblackprince.1
+	title = theblackprince.1.t
+	desc = theblackprince.1.d
+	picture = DEATH_OF_HEIR_eventPicture
+
+	trigger = {
+		tag = BUL
+		government = republic
+		religion = mahayana
+		is_year = 1459
+	}
+
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	fire_only_once = yes
+
+	option = {
+		name = theblackprince.1.a
+	}
+}
+
+country_event = {
+	id = theblackprince.2
+	title = theblackprince.2.t
+	desc = theblackprince.2.d
+	picture = SIEGE_eventPicture
+
+	trigger = {
+		tag = BUL
+		government = republic
+		religion = mahayana
+		is_year = 1459
+		SER = {
+			religion = slavic
+			has_ruler = "Goran I"
+			has_country_modifier = bul_throne_claim
+		}
+		OR = {
+			AND = {
+				war_exhaustion = 3
+				NOT = {
+					stability = 3
+				}
+			}
+			NOT = {
+				stability = 0
+			}
+		}
+		
+	}
+
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	option = {
+		name = theblackprince.2.a
+		ai_chance = { factor = 0.2 }
+		SER = {
+			create_union = BUL
+			remove_country_modifier = bul_throne_claim
+		}
+		change_religion = slavic
+	}
+
+	option = {
+		name = theblackprince.2.b	
+		ai_chance = { factor = 0.8 }
+		SER = {
+			declare_war_with_cb = {
+				who = BUL
+				casus_belli = cb_restore_personal_union
+			}
+			remove_country_modifier = bul_throne_claim
+		}
+		random_owned_province = {
+			limit = {
+				OR = {
+					religion = slavic	
+					religion = tengri_pagan_reformed
+				}
+				spawn_rebels = {
+					type = bogatyrite_rebels
+					size = 2
+				}
+			}
+		}
+		random_owned_province = {
+			limit = {
+				OR = {
+					religion = slavic	
+					religion = tengri_pagan_reformed
+				}
+				spawn_rebels = {
+					type = bogatyrite_rebels
+					size = 2
+				}
+			}
+		}
+	}
+}
+	
+country_event = {
+	id = theblackprince.3
+	title = theblackprince.3.t
+	desc = theblackprince.3.d
+	picture = MILITARY_CAMP_eventPicture
+
+	trigger = {
+		tag = SER
+		has_country_modifier = bul_throne_claim
+		BUL = {
+			government = monarchy 
+			has_ruler = "Pyotr III"
+			religion = tengri_pagan_reformed
+		}
+	}
+
+	mean_time_to_happen = {
+		months = 24
+	}
+
+	fire_only_once = yes
+
+	option = {
+		name = theblackprince.3.a
+		BUL = {
+			add_country_modifier = {
+				name = "infiltrated_army"
+				duration = 7300
+			}
+		}
+	}
+}
+
+country_event = {
+	id = theblackprince.4
+	title = theblackprince.4.t
+	desc = theblackprince.4.d
+	picture = ANGRY_MOB_eventPicture
+
+	trigger = {
+		tag = SER
+		has_country_modifier = bul_throne_claim
+		BUL = {
+			government = monarchy 
+			has_ruler = "Pyotr III"
+			religion = tengri_pagan_reformed
+		}
+	}
+
+	mean_time_to_happen = {
+		months = 48
+	}
+
+	fire_only_once = yes
+
+	option = {
+		name = theblackprince.3.a
+		BUL = {
+			add_country_modifier = {
+				name = "infiltrated_countryside"
+				duration = 7300
+			}
+		}
+	}
+}
+
+country_event = {
+	id = theblackprince.5
+	title = theblackprince.5.t
+	desc = theblackprince.5.d
+	picture = MERCHANTS_TALKING_eventPicture
+
+	trigger = {
+		tag = SER
+		has_country_modifier = bul_throne_claim
+		BUL = {
+			government = monarchy 
+			has_ruler = "Pyotr III"
+			religion = tengri_pagan_reformed
+		}
+	}
+
+	mean_time_to_happen = {
+		months = 72
+	}
+
+	fire_only_once = yes
+
+	option = {
+		name = theblackprince.3.a
+		BUL = {
+			add_country_modifier = {
+				name = "infiltrated_cities"
+				duration = 7300
+			}
+		}
+	}
+}
+
+country_event = {
+	id = theblackprince.6
+	title = theblackprince.6.t
+	desc = theblackprince.6.d
+	picture = DIPLOMACY_eventPicture
+
+	trigger = {
+		tag = SER
+		has_country_modifier = bul_throne_claim
+		BUL = {
+			government = monarchy 
+			has_ruler = "Pyotr III"
+			religion = tengri_pagan_reformed
+		}
+	}
+
+	mean_time_to_happen = {
+		months = 96
+	}
+
+	fire_only_once = yes
+
+	option = {
+		name = theblackprince.3.a
+		BUL = {
+			add_country_modifier = {
+				name = "infiltrated_court"
+				duration = 7300
+			}
+		}
+	}
+}
+
+country_event = {
+	id = theblackprince.7
+	title = theblackprince.7.t
+	desc = theblackprince.7.d
+	picture = RELIGIOUS_WARS_eventPicture
+
+	trigger = {
+		tag = SER
+		has_country_modifier = bul_throne_claim
+		BUL = {
+			government = monarchy 
+			has_ruler = "Pyotr III"
+			religion = tengri_pagan_reformed
+		}
+	}
+
+	mean_time_to_happen = {
+		months = 120
+	}
+
+	fire_only_once = yes
+
+	option = {
+		name = theblackprince.3.a
+		BUL = {
+			add_country_modifier = {
+				name = "infiltrated_royal_family"
+				duration = 7300
+			}
+		}
+	}
+}
+
+country_event = {
+	id = theblackprince.8
+	title = theblackprince.8.t
+	desc = theblackprince.8.d
+	picture = REVOLUTION_eventPicture
+
+	trigger = {
+		tag = BUL
+		SER = {
+			has_country_modifier = bul_throne_claim
+		}
+		government = monarchy 
+		has_ruler = "Pyotr III"
+		religion = tengri_pagan_reformed
+	}
+
+	mean_time_to_happen = {
+		months = 60
+	}
+
+	fire_only_once = yes
+
+	option = {
+		name = theblackprince.8.a
+		ai_chance = { 
+			factor = 0.1 
+			modifier = {
+				factor = 2
+				has_country_modifier = infiltrated_army
+			}
+			modifier = {
+				factor = 2
+				has_country_modifier = infiltrated_countryside
+			}
+			modifier = {
+				factor = 2
+				has_country_modifier = infiltrated_cities
+			}
+			modifier = {
+				factor = 2
+				has_country_modifier = infiltrated_court
+			}
+			modifier = {
+				factor = 2
+				has_country_modifier = infiltrated_royal_family
+			}
+		}
+		
+		SER = {
+			create_union = BUL
+			remove_country_modifier = bul_throne_claim
+		}
+		change_religion = slavic
+		if = {
+			limit = {
+				has_country_modifier = infiltrated_countryside
+			}
+			remove_country_modifier = infiltrated_countryside
+		}
+		if = {
+			limit = {
+				has_country_modifier = infiltrated_army
+			}
+			remove_country_modifier = infiltrated_army
+		}
+		if = {
+			limit = {
+				has_country_modifier = infiltrated_cities
+			}
+			remove_country_modifier = infiltrated_cities
+		}
+		if = {
+			limit = {
+				has_country_modifier = infiltrated_countryside
+			}
+			remove_country_modifier = infiltrated_countryside
+		}
+		if = {
+			limit = {
+				has_country_modifier = infiltrated_court
+			}
+			remove_country_modifier = infiltrated_court
+		}
+		if = {
+			limit = {
+				has_country_modifier = infiltrated_royal_family
+			}
+			remove_country_modifier = infiltrated_royal_family
+		}
+		
+	}
+
+	option = {
+		name = theblackprince.8.b
+		SER = {
+			country_event = {
+				id = theblackprince.9
+			}
+			remove_country_modifier = bul_throne_claim
+		}
+	}
+}
+	
+country_event = {
+	id = theblackprince.9
+	title = theblackprince.9.t
+	desc = theblackprince.9.d
+	picture = BORDER_TENSION_eventPicture
+
+	is_triggered_only = yes
+
+	option = {
+		name = theblackprince.9.a
+		declare_war_with_cb = {
+			who = BUL
+			casus_belli = cb_restore_personal_union
+		}
+	}
+}
+
+country_event = {
+	id = theblackprince.10
+	title = theblackprince.10.t
+	desc = theblackprince.10.d
+	picture = FEAST_eventPicture
+
+	trigger = { 	
+		tag = BUL
+		government = republic
+		religion = mahayana
+		SER = {
+			NOT = {
+				has_ruler = "Goran I"
+			}
+		}
+	}
+
+	fire_only_once = yes
+
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	option = {
+		name = theblackprince.10.a
+	}
+}

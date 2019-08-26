@@ -1,0 +1,1014 @@
+namespace = shadowfaith
+
+country_event = {
+	id = shadowfaith.1
+	title = shadowfaith.1.t
+	desc = shadowfaith.1.d
+	picture = PORTUGUESE_MERCHANTS_eventPicture
+
+	trigger = {
+		OR = {
+			technology_group = western
+			technology_group = eastern
+			technology_group = ottoman
+			technology_group = east_african
+		}
+		NOT = {
+			has_country_modifier = mithras_presence
+			has_country_modifier = large_mithras_presence
+			has_country_modifier = suppressed_mithraists
+		}
+		has_country_modifier = knowledge_of_mithras
+	}
+
+	mean_time_to_happen = {
+		months = 1800
+		modifier = {
+			factor = 0.5
+			any_neighbor_country = {
+				has_country_modifier = mithras_presence
+			}
+		}
+		modifier = {
+			factor = 0.25
+			any_neighbor_country = {
+				has_country_modifier = large_mithras_presence
+			}
+		}
+	}
+
+	option = {
+		name = shadowfaith.1.a
+		ai_chance = { factor = 0.2 }
+		add_country_modifier = {
+			name = mithras_presence
+			duration = -1
+		}
+	}
+	
+	option = {
+		name = shadowfaith.1.b
+		ai_chance = { factor = 0.05 }
+		add_prestige = -10
+		add_country_modifier = {
+			name = heavy_mithras_presence
+			duration = -1
+		}
+	}
+
+	option = {
+		name = shadowfaith.1.c
+		ai_chance = { factor = 0.75 }
+		add_stability = -1
+		hidden_effect = {
+			add_country_modifier = {
+				name = "suppressed_mithraists"
+				duration = -1
+			}
+		}
+	}
+}
+
+country_event = {
+	id = shadowfaith.2
+	title = shadowfaith.2.t
+	desc = shadowfaith.2.d
+	picture = PRAYING_eventPicture
+
+	trigger = {
+		OR = {
+			technology_group = western
+			technology_group = eastern
+			technology_group = ottoman
+			technology_group = east_african
+		}
+		NOT = {
+			has_country_modifier = mithras_presence
+			has_country_modifier = heavy_mithras_presence
+			has_country_modifier = knowledge_of_mithras
+		}
+		
+	}
+
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	option = {
+		name = shadowfaith.2.a
+		hidden_effect = {
+			add_country_modifier = {
+				name = "knowledge_of_mithras"
+				duration = -1
+			}
+		}
+		if = {
+			limit = {
+				OR = {
+					religion = cult_of_jupiter
+					religion = cult_of_isis
+					tag = MJO
+					tag = VEN
+					tag = CRO
+					tag = SYR
+					tag = SIC
+				}
+			}
+			add_country_modifier = {
+				name = "heavy_mithras_presence"
+				duration = -1
+			}
+		}
+		if = {
+			limit = {
+				OR = {
+					junior_union_with = SPA
+					tag = SPA
+					tag = TRP
+					tag = GRA
+					tag = TOU
+					tag = DAU
+					tag = ITA
+					tag = BOS
+					tag = STY
+					tag = ALB
+					tag = BYZ
+					tag = RAM
+					tag = MAM
+					primary_culture = tunisian
+					primary_culture = moroccan
+					primary_culture = berber
+					primary_culture = algerian
+				}
+			}
+			add_country_modifier = {
+				name = "mithras_presence"
+				duration = -1
+			}
+		}
+		if = {
+			limit = {
+				tag = SPA
+				NOT = {
+					has_country_modifier = decrepit_administration
+				}
+			}
+			add_country_modifier = {
+				name = "decrepit_administration"
+				duration = -1
+			}
+		}
+	}
+}
+
+country_event = {
+	id = shadowfaith.3
+	title = shadowfaith.3.t
+	desc = shadowfaith.3.d
+	picture = CORRUPTION_eventPicture
+
+	trigger = {
+		OR = {
+			has_country_modifier = mithras_presence
+			has_country_modifier = heavy_mithras_presence
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 240
+		modifier = {
+			factor = 0.9
+			NOT = {
+				karma = -10
+			}
+		}
+		modifier = {
+			factor = 0.9
+			NOT = {
+				karma = -20
+			}
+		}
+		modifier = {
+			factor = 0.9
+			NOT = {
+				karma = -30
+			}
+		}
+		modifier = {
+			factor = 0.9
+			NOT = {
+				karma = -40
+			}
+		}
+		modifier = {
+			factor = 0.9
+			NOT = {
+				karma = -50
+			}
+		}
+		modifier = {
+			factor = 0.9
+			NOT = {
+				karma = -60
+			}
+		}
+		modifier = {
+			factor = 0.9
+			NOT = {
+				karma = -70
+			}
+		}
+		modifier = {
+			factor = 0.9
+			NOT = {
+				karma = -80
+			}
+		}
+		modifier = {
+			factor = 0.9
+			NOT = {
+				karma = -90
+			}
+		}
+		modifier = {
+			factor = 1.1
+			karma = 10
+		}
+		modifier = {
+			factor = 1.1
+			karma = 20
+		}
+		modifier = {
+			factor = 1.1
+			karma = 30
+		}
+		modifier = {
+			factor = 1.1
+			karma = 40
+		}
+		modifier = {
+			factor = 1.1
+			karma = 50
+		}
+		modifier = {
+			factor = 1.1
+			karma = 60
+		}
+		modifier = {
+			factor = 1.1
+			karma = 70
+		}
+		modifier = {
+			factor = 1.1
+			karma = 80
+		}
+		modifier = {
+			factor = 1.1
+			karma = 90
+		}
+	}
+
+	option = {
+		name = shadowfaith.3.a
+		add_country_modifier = {
+			name = "shadowfaith_angry_advisors"
+			duration = 730
+		}
+	}
+
+	option = {
+		name = shadowfaith.3.b
+		add_years_of_income = -0.25
+		add_corruption = 1
+	}
+}
+
+country_event = {
+	id = shadowfaith.4
+	title = shadowfaith.4.t
+	desc = shadowfaith.4.d
+	picture = ANGRY_MOB_eventPicture
+
+	trigger = {
+		OR = {
+			has_country_modifier = mithras_presence
+			has_country_modifier = heavy_mithras_presence
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 240
+		modifier = {
+			factor = 0.9
+			NOT = {
+				karma = -10
+			}
+		}
+		modifier = {
+			factor = 0.9
+			NOT = {
+				karma = -20
+			}
+		}
+		modifier = {
+			factor = 0.9
+			NOT = {
+				karma = -30
+			}
+		}
+		modifier = {
+			factor = 0.9
+			NOT = {
+				karma = -40
+			}
+		}
+		modifier = {
+			factor = 0.9
+			NOT = {
+				karma = -50
+			}
+		}
+		modifier = {
+			factor = 0.9
+			NOT = {
+				karma = -60
+			}
+		}
+		modifier = {
+			factor = 0.9
+			NOT = {
+				karma = -70
+			}
+		}
+		modifier = {
+			factor = 0.9
+			NOT = {
+				karma = -80
+			}
+		}
+		modifier = {
+			factor = 0.9
+			NOT = {
+				karma = -90
+			}
+		}
+		modifier = {
+			factor = 1.1
+			karma = 10
+		}
+		modifier = {
+			factor = 1.1
+			karma = 20
+		}
+		modifier = {
+			factor = 1.1
+			karma = 30
+		}
+		modifier = {
+			factor = 1.1
+			karma = 40
+		}
+		modifier = {
+			factor = 1.1
+			karma = 50
+		}
+		modifier = {
+			factor = 1.1
+			karma = 60
+		}
+		modifier = {
+			factor = 1.1
+			karma = 70
+		}
+		modifier = {
+			factor = 1.1
+			karma = 80
+		}
+		modifier = {
+			factor = 1.1
+			karma = 90
+		}
+	}
+
+	option = {
+		name = shadowfaith.4.a
+		ai_will_do = { factor = 0.8 }
+		add_country_modifier = {
+			name = "shadowfaith_religious_tension"
+			duration = 730
+		}
+	}
+
+	option = {
+		name = shadowfaith.4.b
+		ai_will_do = { factor = 0.2 }
+		if = {
+			limit = {
+				has_country_modifier = mithras_presence
+			}
+			random_owned_province = {
+				spawn_rebels = {
+					type = mithraist_rebels
+					size = 3
+				}
+			}
+		}
+		if = {
+			limit = {
+				has_country_modifier = heavy_mithras_presence
+			}
+			random_owned_province = {
+				spawn_rebels = {
+					type = mithraist_rebels
+					size = 3
+				}
+			}
+			random_owned_province = {
+				spawn_rebels = {
+					type = mithraist_rebels
+					size = 3
+				}
+			}
+			add_country_modifier = {
+				name = "shadowfaith_angry_advisors"
+				duration = 730
+			}
+		}
+	}
+}
+
+country_event = {
+	id = shadowfaith.5
+	title = shadowfaith.5.t
+	desc = shadowfaith.5.d
+	picture = ADVISOR_eventPicture 
+
+	trigger = {
+		has_country_modifier = mithras_presence
+	}
+	
+	mean_time_to_happen = {
+		months = 480
+		modifier = {
+			factor = 0.9
+			karma = 10
+		}
+		modifier = {
+			factor = 0.9
+			karma = 20
+		}
+		modifier = {
+			factor = 0.9
+			karma = 30
+		}
+		modifier = {
+			factor = 0.9
+			karma = 40
+		}
+		modifier = {
+			factor = 0.9
+			karma = 50
+		}
+		modifier = {
+			factor = 0.9
+			karma = 60
+		}
+		modifier = {
+			factor = 0.9
+			karma = 70
+		}
+		modifier = {
+			factor = 0.9
+			karma = 80
+		}
+		modifier = {
+			factor = 0.9
+			karma = 90
+		}
+		modifier = {
+			factor = 1.1
+			NOT = {
+				karma = -10
+			}
+		}
+		modifier = {
+			factor = 1.1
+			NOT = {
+				karma = -20
+			}
+		}
+		modifier = {
+			factor = 1.1
+			NOT = {
+				karma = -30
+			}
+		}
+		modifier = {
+			factor = 1.1
+			NOT = {
+				karma = -40
+			}
+		}
+		modifier = {
+			factor = 1.1
+			NOT = {
+				karma = -50
+			}
+		}
+		modifier = {
+			factor = 1.1
+			NOT = {
+				karma = -60
+			}
+		}
+		modifier = {
+			factor = 1.1
+			NOT = {
+				karma = -70
+			}
+		}
+		modifier = {
+			factor = 1.1
+			NOT = {
+				karma = -80
+			}
+		}
+		modifier = {
+			factor = 1.1
+			NOT = {
+				karma = -90
+			}
+		}
+	}
+
+	option = {
+		name = shadowfaith.5.a
+		ai_will_do = { factor = 0.1 }
+		add_country_modifier = {
+			name = "shadowfaith_fiscal_advice"
+			duration = 3650
+		}
+		remove_country_modifier = mithras_presence
+		add_country_modifier = {
+			name = "heavy_mithras_presence"
+			duration = -1
+		}
+	}
+
+	option = {
+		name = shadowfaith.5.b
+		ai_will_do = { factor = 0.1 }
+		add_country_modifier = {
+			name = "shadowfaith_military_advice"
+			duration = 3650
+		}
+		remove_country_modifier = mithras_presence
+		add_country_modifier = {
+			name = "heavy_mithras_presence"
+			duration = -1
+		}
+	}
+
+	option = {
+		name = shadowfaith.5.c
+		ai_will_do = { factor = 0.1 }
+		add_country_modifier = {
+			name = "shadowfaith_humanist_advice"
+			duration = 3650
+		}
+		remove_country_modifier = mithras_presence
+		add_country_modifier = {
+			name = "heavy_mithras_presence"
+			duration = -1
+		}
+	}
+
+	option = {
+		name = shadowfaith.5.da
+		ai_will_do = { factor = 0.7 }
+	}
+}
+
+country_event = {
+	id = shadowfaith.6
+	title = shadowfaith.6.t
+	desc = shadowfaith.6.d
+	picture = BIG_BOOK_eventPicture
+		
+	trigger = {
+		OR = {
+			has_country_modifier = mithras_presence
+			has_country_modifier = heavy_mithras_presence
+		}
+		NOT = {
+			has_country_modifier = shadowfaith_improved_medicine
+		}
+	}
+
+	mean_time_to_happen = {
+		months = 480
+		modifier = {
+			factor = 0.9
+			karma = 10
+		}
+		modifier = {
+			factor = 0.9
+			karma = 20
+		}
+		modifier = {
+			factor = 0.9
+			karma = 30
+		}
+		modifier = {
+			factor = 0.9
+			karma = 40
+		}
+		modifier = {
+			factor = 0.9
+			karma = 50
+		}
+		modifier = {
+			factor = 0.9
+			karma = 60
+		}
+		modifier = {
+			factor = 0.9
+			karma = 70
+		}
+		modifier = {
+			factor = 0.9
+			karma = 80
+		}
+		modifier = {
+			factor = 0.9
+			karma = 90
+		}
+		modifier = {
+			factor = 1.1
+			NOT = {
+				karma = -10
+			}
+		}
+		modifier = {
+			factor = 1.1
+			NOT = {
+				karma = -20
+			}
+		}
+		modifier = {
+			factor = 1.1
+			NOT = {
+				karma = -30
+			}
+		}
+		modifier = {
+			factor = 1.1
+			NOT = {
+				karma = -40
+			}
+		}
+		modifier = {
+			factor = 1.1
+			NOT = {
+				karma = -50
+			}
+		}
+		modifier = {
+			factor = 1.1
+			NOT = {
+				karma = -60
+			}
+		}
+		modifier = {
+			factor = 1.1
+			NOT = {
+				karma = -70
+			}
+		}
+		modifier = {
+			factor = 1.1
+			NOT = {
+				karma = -80
+			}
+		}
+		modifier = {
+			factor = 1.1
+			NOT = {
+				karma = -90
+			}
+		}
+	}
+
+	option = {
+		name = shadowfaith.6.a
+		add_country_modifier = {
+			name = "shadowfaith_improved_medicine"
+			duration = 3650
+		}
+		add_stability = -1
+	}
+
+	option = {
+		name = shadowfaith.6.b
+		if = {
+			limit = {
+				has_country_modifier = mithras_presence
+			}
+			add_stability = 1
+		}
+		if = {
+			limit = {
+				has_country_modifier = heavy_mithras_presence
+			}
+			add_stability = -1
+		}
+	}
+}
+
+country_event = {
+	id = shadowfaith.7
+	title = shadowfaith.7.t
+	desc = shadowfaith.7.d
+	picture = ACCUSATION_eventPicture
+
+	trigger = {
+		has_country_modifier = heavy_mithras_presence
+	}
+
+	mean_time_to_happen = {
+		months = 600
+		modifier = {
+			factor = 0.9
+			NOT = {
+				karma = -10
+			}
+		}
+		modifier = {
+			factor = 0.9
+			NOT = {
+				karma = -20
+			}
+		}
+		modifier = {
+			factor = 0.9
+			NOT = {
+				karma = -30
+			}
+		}
+		modifier = {
+			factor = 0.9
+			NOT = {
+				karma = -40
+			}
+		}
+		modifier = {
+			factor = 0.9
+			NOT = {
+				karma = -50
+			}
+		}
+		modifier = {
+			factor = 0.9
+			NOT = {
+				karma = -60
+			}
+		}
+		modifier = {
+			factor = 0.9
+			NOT = {
+				karma = -70
+			}
+		}
+		modifier = {
+			factor = 0.9
+			NOT = {
+				karma = -80
+			}
+		}
+		modifier = {
+			factor = 0.9
+			NOT = {
+				karma = -90
+			}
+		}
+		modifier = {
+			factor = 1.1
+			karma = 10
+		}
+		modifier = {
+			factor = 1.1
+			karma = 20
+		}
+		modifier = {
+			factor = 1.1
+			karma = 30
+		}
+		modifier = {
+			factor = 1.1
+			karma = 40
+		}
+		modifier = {
+			factor = 1.1
+			karma = 50
+		}
+		modifier = {
+			factor = 1.1
+			karma = 60
+		}
+		modifier = {
+			factor = 1.1
+			karma = 70
+		}
+		modifier = {
+			factor = 1.1
+			karma = 80
+		}
+		modifier = {
+			factor = 1.1
+			karma = 90
+		}
+	}
+
+	option = {
+		name = shadowfaith.7.a
+		add_years_of_income = -0.2
+		add_stability = -1
+	}
+
+	option = {
+		name = shadowfaith.7.b
+		random_owned_province = {
+			spawn_rebels = {
+				type = mithraist_rebels
+				size = 2
+			}
+		}
+	}
+}
+
+country_event = {
+	id = shadowfaith.8
+	title = shadowfaith.8.t
+	desc = shadowfaith.8.d
+	picture = TRADE_GOODS_eventPicture
+
+	trigger = {
+		has_country_modifier = heavy_mithraist_influence
+		OR = {
+			government = republic
+			AND = {
+				has_parliament = yes
+				has_active_debate = yes
+			}
+		}
+	}
+
+	mean_time_to_happen = {
+		months = 360
+	}
+
+	option = {
+		name = shadowfaith.8.a
+		add_years_of_income = 1
+		if = {
+			limit = {
+				government = republic
+			}
+			add_adm_power = -100
+		}
+		if = {
+			limit = {
+				has_parliament = yes
+			}
+			every_owned_province = {
+				limit = { 
+					has_seat_in_parliament = yes
+				}
+				back_current_issue = no
+			}
+		}
+	}
+	option = {
+		name = shadowfaith.8.b
+	}
+}
+
+country_event = {
+	id = shadowfaith.9
+	title = shadowfaith.9.t
+	desc = shadowfaith.9.d
+	picture = KING_SICK_IN_BED_eventPicture
+
+	trigger = {
+		has_country_modifier = heavy_mithraist_influence
+		NOT = {
+			has_parliament = yes
+		}
+		NOT = {
+			has_country_modifier = shadowfaith_court_control
+		}
+		government = monarchy
+	}
+
+	mean_time_to_happen = {
+		months = 1200
+		modifier = {
+			factor = 0.9
+			NOT = {
+				karma = -10
+			}
+		}
+		modifier = {
+			factor = 0.9
+			NOT = {
+				karma = -20
+			}
+		}
+		modifier = {
+			factor = 0.9
+			NOT = {
+				karma = -30
+			}
+		}
+		modifier = {
+			factor = 0.9
+			NOT = {
+				karma = -40
+			}
+		}
+		modifier = {
+			factor = 0.9
+			NOT = {
+				karma = -50
+			}
+		}
+		modifier = {
+			factor = 0.9
+			NOT = {
+				karma = -60
+			}
+		}
+		modifier = {
+			factor = 0.9
+			NOT = {
+				karma = -70
+			}
+		}
+		modifier = {
+			factor = 0.9
+			NOT = {
+				karma = -80
+			}
+		}
+		modifier = {
+			factor = 0.9
+			NOT = {
+				karma = -90
+			}
+		}
+		modifier = {
+			factor = 1.1
+			karma = 10
+		}
+		modifier = {
+			factor = 1.1
+			karma = 20
+		}
+		modifier = {
+			factor = 1.1
+			karma = 30
+		}
+		modifier = {
+			factor = 1.1
+			karma = 40
+		}
+		modifier = {
+			factor = 1.1
+			karma = 50
+		}
+		modifier = {
+			factor = 1.1
+			karma = 60
+		}
+		modifier = {
+			factor = 1.1
+			karma = 70
+		}
+		modifier = {
+			factor = 1.1
+			karma = 80
+		}
+		modifier = {
+			factor = 1.1
+			karma = 90
+		}
+	}
+
+	option = {
+		name = shadowfaith.9.a
+		add_country_modifier = {
+			name = shadowfaith_court_control
+			duration = 1825
+		}
+	}
+}

@@ -1,0 +1,270 @@
+namespace = zamaspite
+
+country_event = {
+	id = zamaspite.1
+	title = "zamaspite.1.t"
+	desc = "zamaspite.1.d"
+	picture = STREET_SPEECH_eventPicture
+
+	trigger = {
+		owns_core_province = 4331
+		OR = {
+			religion = zoroastrian
+			religion = mazdakhite
+		}
+		4331 = {
+			OR = {
+				religion = zoroastrian
+				religion = mazdakhite
+			}
+		}
+		is_year = 1500
+	}
+
+	mean_time_to_happen = {
+		months = 60
+	}
+
+	fire_only_once = yes
+
+	option = {
+		name = "zamaspite.1.a"
+		ai_chance = { factor = 0.5 }
+		4331 = {
+			change_religion = zamaspite
+			add_reform_center = zamaspite
+			add_permanent_province_modifier = {
+				name = "religious_zeal_at_conv"
+				duration = 9000
+			}
+		}
+	}
+
+	option = {
+		name = "zamaspite.1.b"
+		ai_chance = { factor = 0.33 }
+		change_religion = zamaspite
+		add_stability = -1
+		add_country_modifier = {
+			name = "conversion_zeal"
+			duration = 3650
+		}
+		4331 = {
+			change_religion = zamaspite
+			add_reform_center = zamaspite
+			add_permanent_province_modifier = {
+				name = "religious_zeal_at_conv"
+				duration = 9000
+			}
+			if = {
+				limit = {
+					NOT = { is_capital = yes }
+				}
+				root = {
+					capital_scope = {
+						change_religion = zamaspite
+						add_permanent_province_modifier = {
+							name = "religious_zeal_at_conv"
+							duration = 9000
+						}
+					}
+				}
+			}
+		}
+	}
+
+	option = {
+		name = "zamaspite.1.c"
+		ai_chance = { factor = 0.17 }
+		4331 = {
+			spawn_rebels = {
+				type = zamaspite_rebels
+				size = 3
+			}
+		}
+	}
+}
+
+country_event = {
+	id = zamaspite.2
+	title = "zamaspite.2.t"
+	desc = "zamaspite.2.d"
+	picture = COUNTRY_COLLAPSE_eventPicture
+
+	major = yes
+
+	trigger = {
+		owns_core_province = 4331
+		4331 = {
+			religion = zamaspite
+		}
+		NOT = { religion = zamaspite }
+		is_year = 1500
+	}
+
+	mean_time_to_happen = {
+		months = 120
+	}
+
+	fire_only_once = yes
+
+	option = {
+		name = "zamaspite.2.a"
+		ai_chance = { factor = 0.33 }
+		change_religion = zamaspite
+		add_government_reform = feudal_theocracy
+		set_ruler = {
+			name = Zamasp
+			dynasty = Hormizd
+			mil = 1
+			adm = 3
+			dip = 0
+			culture = persian
+		}
+	}
+
+	option = {
+		name = "zamaspite.2.b"
+		ai_chance = { factor = 0.67 }
+		4331 = {
+			spawn_rebels = {
+				type = zamaspite_rebels
+				size = 3
+				name = "Bahadur Hormizd"
+			}
+		}
+		random_owned_province = {
+			limit = {
+				is_capital = yes
+			}
+			spawn_rebels = {
+				type = zamaspite_rebels
+				size = 4
+				name = "Zamasp Hormizd"
+			}
+		}
+	}
+}
+
+country_event = {
+	id = zamaspite.3
+	title = zamaspite.3.t
+	desc = zamaspite.3.d
+	picture = BIG_BOOK_eventPicture
+
+	trigger = {
+		religion = zamaspite
+		has_country_modifier = persian_renaissance
+	}
+
+	mean_time_to_happen = {
+		months = 60
+	}
+
+	fire_only_once = yes
+
+	option = {
+		name = zamaspite.3.a
+		ai_chance = { factor = 0.2 }
+		add_piety = -0.25
+		add_stability = 1
+		add_estate_loyalty = {
+			estate = estate_nobles
+			loyalty = -25
+		}
+		add_estate_influence = {
+			estate = estate_nobles
+			influence = -25
+		}
+	}
+
+	option = {
+		name = zamaspite.3.b
+		ai_chance = { factor = 0.8 }
+		add_piety = 0.25
+		add_stability = -1
+		add_estate_loyalty = {
+			estate = estate_nobles
+			loyalty = 25
+		}
+		add_estate_influence = {
+			estate = estate_nobles
+			influence = 25
+		}
+		remove_country_modifier = persian_renaissance
+		add_country_modifier = {
+			name = zamasp_book_burning
+			duration = 36500
+		}
+	}
+}
+
+country_event = {
+	id = zamaspite.4
+	title = zamaspite.4.t
+	desc = zamaspite.4.d
+	picture = RELIGIOUS_CONVERSION_eventPicture
+
+	trigger = {
+		religion = zamaspite
+	}
+
+	mean_time_to_happen = {
+		months = 60
+	}
+
+	fire_only_once = yes
+
+	option = {
+		name = zamaspite.4.a
+		ai_chance = { factor = 0.2 }
+		add_stability = 1
+		add_country_modifier = {
+			name = zamasp_yes_temples
+			duration = -1
+		}
+	}
+
+	option = {
+		name = zamaspite.4.b
+		ai_chance = { factor = 0.8 }
+		add_stability = -1
+		add_country_modifier = {
+			name = zamasp_no_temples
+			duration = -1
+		}
+	}
+	
+}
+
+country_event = {
+	id = zamaspite.5
+	title = zamaspite.5.t
+	desc = zamaspite.5.d
+	picture = PRAYING_eventPicture
+
+	trigger = {
+		religion = zamaspite
+	}
+
+	mean_time_to_happen = {
+		months = 120
+	}
+
+	fire_only_once = yes
+
+	option = {
+		name = zamaspite.5.a
+		add_prestige = 10
+	}
+
+	option = {
+		name = zamaspite.5.b
+		4331 = {
+			add_province_modifier = {
+				name = "zamasp_global_book"
+				duration = -1
+			}
+		}
+	}
+}

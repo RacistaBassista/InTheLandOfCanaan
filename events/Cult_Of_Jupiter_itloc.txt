@@ -1,0 +1,243 @@
+namespace = jupiterian
+# condemned until further notice
+
+country_event = {
+	id = jupiterian.1
+	title = jupiterian.1.t
+	desc = jupiterian.1.d
+	picture = BANKRUPTCY_eventPicture
+
+	trigger = {
+		religion = cult_of_jupiter
+		NOT = {
+			is_year = 1445
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 1
+		modifier = {
+			factor = 1000
+			has_country_modifier = jupiter_demands
+		}
+	}
+
+	option = {
+		name = jupiterian.1.a
+		add_country_modifier = {
+			name = "jupiter_demands"
+			duration = -1
+		}
+	}
+}
+
+
+country_event = {
+	id = jupiterian.7
+	title = jupiterian.7.t
+	desc = jupiterian.7.d
+	picture = GREAT_BUILDING_eventPicture
+
+	is_triggered_only = yes
+
+	option = {
+		name = jupiterian.2.a
+		ai_chance = { factor = 1 }
+		add_years_of_income = -1
+		add_country_modifier = {
+			name = jupiter_sated_money
+			duration = 3650
+		}
+	}
+
+	option = {
+		name = jupiterian.2.b
+		ai_chance = { factor = 0 }
+		add_country_modifier = {
+			name = jupiter_angery
+			duration = 3650
+		}
+	}
+}
+
+country_event = {
+	id = jupiterian.8
+	title = jupiterian.8.t
+	desc = jupiterian.8.d
+	picture = TRADE_GOODS_PLANTATION_GOODS_IN_WAREHOUSE_eventPicture
+
+	is_triggered_only = yes
+
+	option = {
+		name = jupiterian.2.a
+		ai_chance = { factor = 1 }
+		add_country_modifier = {
+			name = jupiter_labor_sacrifice
+			duration = 180
+		}
+		add_country_modifier = {
+			name = jupiter_sated_labor
+			duration = 3650
+		}
+	}
+
+	option = {
+		name = jupiterian.2.b
+		ai_chance = { factor = 0 }
+		add_country_modifier = {
+			name = jupiter_angery
+			duration = 3650
+		}
+	}
+}
+
+country_event = {
+	id = jupiterian.9
+	title = jupiterian.9.t
+	desc = jupiterian.9.d
+	picture = MILITARY_CAMP_eventPicture
+
+	is_triggered_only = yes
+
+	option = {
+		name = jupiterian.2.a
+		ai_chance = { factor = 1 }
+		random_country = {
+			limit = {
+				knows_country = ROOT
+				NOT = {
+					religion = cult_of_jupiter
+					alliance_with = ROOT
+					army_strength = {
+						who = ROOT
+						value = 1.5
+					}
+				}
+				army_strength = {
+					who = ROOT
+					value = 0.5
+				}
+			}
+            		declare_war_with_cb = {
+                		who = PREV
+                		casus_belli = cb_crusade
+            		}
+        	}
+		add_country_modifier = {
+			name = jupiter_sated_blood
+			duration = 3650
+		}
+	}
+
+	option = {
+		name = jupiterian.2.b
+		ai_chance = { factor = 0 }
+		add_country_modifier = {
+			name = jupiter_angery
+			duration = 3650
+		}
+	}
+}
+
+country_event = {
+	id = jupiterian.10
+	title = jupiterian.10.t
+	desc = jupiterian.10.d
+	picture = HOUSE_OF_TRADE_eventPicture
+
+	is_triggered_only = yes
+
+	option = {
+		name = jupiterian.2.a
+		ai_chance = { factor = 1 }
+		add_country_modifier = {
+			name = jupiter_knowledge_sacrifice
+			duration = 365
+		}
+		add_country_modifier = {
+			name = jupiter_sated_knowledge
+			duration = 3650
+		}
+	}
+
+	option = {
+		name = jupiterian.2.b
+		ai_chance = { factor = 0 }
+		add_country_modifier = {
+			name = jupiter_angery
+			duration = 3650
+		}
+	}
+}
+
+country_event = {
+	id = jupiterian.6
+	title = jupiterian.6.t
+	desc = jupiterian.6.d
+	picture = IMPORTANT_STATUE_eventPicture
+
+	trigger = {
+		NOT = {
+			has_country_modifier = jupiter_sated_money
+			has_country_modifier = jupiter_sated_labor
+			has_country_modifier = jupiter_sated_blood
+			has_country_modifier = jupiter_sated_knowledge
+			has_country_modifier = jupiter_angery
+		}
+		has_country_modifier = jupiter_demands
+	}
+
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	option = {
+		name = jupiterian.6.a
+		random_list = {
+			25 = {
+				country_event = {
+					id = jupiterian.7
+				}
+			}
+			25 = {
+				country_event = {
+					id = jupiterian.8
+				}
+			}
+			25 = {
+				country_event = {
+					id = jupiterian.9
+				}
+			}
+			25 = {
+				country_event = {
+					id = jupiterian.10
+				}
+			}
+		}
+	}
+}
+
+# remove jupiter demands when country changes religion
+country_event = {
+	id = jupiterian.11
+	title = jupiterian.11.t
+	desc = jupiterian.11.d
+	picture = GREAT_BUILDING_eventPicture
+
+	trigger = {
+		has_country_modifier = jupiter_demands
+		NOT = {
+			religion = cult_of_jupiter
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	option = {
+		name = jupiterian.11.a
+		remove_country_modifier = jupiter_demands
+	}
+}

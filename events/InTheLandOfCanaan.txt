@@ -1,0 +1,1714 @@
+
+
+namespace = inthelandofcanaan_events
+
+country_event = {
+	id = russiabuddha.1
+	title = russiabuddha.1.t
+	desc = russiabuddha.1.d
+	picture = BUDDHA_eventPicture
+
+	trigger = {
+		has_reform = tsardom
+		religion = mahayana
+	}
+
+	mean_time_to_happen = {
+		months = 600
+	}
+
+	option = {
+		name = russiabuddha.1.a
+		kill_ruler = yes
+		define_ruler = {
+			age = 0
+		}
+	}
+}
+
+country_event = {
+	id = 9931
+	title = "EVTNAME9931"
+	desc = "EVTDESC9931"
+	picture = BUDDHA_eventPicture
+
+	trigger = {
+		OR = {
+			religion = buddhism
+			religion = mahayana
+			religion = vajrayana
+		}
+
+		NOT = {
+			has_country_modifier = karma_recognized
+		}
+	}
+		
+	mean_time_to_happen = {
+		months = 2
+	}
+	
+	option = {
+		name = "EVTOPTA9931"
+		hidden_effect = {
+			add_country_modifier = {
+				name = "karma_recognized"
+				duration = -1
+			}
+		}
+	}
+}
+
+country_event = {
+	id = 9932
+	title = "EVTNAME9932"
+	desc = "EVTDESC9932"
+	picture = COURT_eventPicture
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = PIC
+	}
+
+	mean_time_to_happen = {
+		months = 1
+	}
+
+	option = {
+		name = "EVTOPTA9932"			
+		PIC = {
+			declare_war_with_cb = {
+				who = BUR
+				casus_belli = cb_independence_war
+			}
+		}
+	}
+}
+
+country_event = {
+	id = 9933
+	title = "EVTNAME9933"
+	desc = "EVTDESC9933"
+	picture = SHIP_SAILING_eventPicture
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = NRM
+	}
+
+	mean_time_to_happen = {
+		days = 3
+	}
+
+	option = {
+		name = "EVTOPTA9933"			
+		NRM = {
+			declare_war_with_cb = {
+				who = BER
+				casus_belli = cb_restore_personal_union
+			}
+		}
+	}
+}
+
+country_event = {
+	id = 9934
+	title = "EVTNAME9934"
+	desc = "EVTDESC9934"
+	picture = BATTLE_eventPicture
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = SCO
+	}
+
+	mean_time_to_happen = {
+		months = 1
+	}
+
+	option = {
+		name = "EVTOPTA9934"			
+		HSC = {
+			declare_war_with_cb = {
+				who = SCO
+				casus_belli = cb_independence_war
+			}
+		}
+	}
+}
+
+country_event = {
+	id = 9935
+	title = "EVTNAME9935"
+	desc = "EVTDESC9935"
+	picture = DEATH_OF_HEIR_eventPicture
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = ARM
+		religion = buddhism
+		has_ruler = "Sarkis II"
+	}
+
+	mean_time_to_happen = {
+		days = 7
+	}
+
+	option = {
+		name = "EVTOPTA9935"
+		kill_ruler = yes
+		add_stability = 1
+		define_ruler = {
+			name = "Serpuhi I"
+			dynasty = "Hakobyan"
+			age = 3
+			female = yes
+		}
+		add_country_modifier = {
+			name = "sarkis_dead"
+			duration = 3600
+		}
+	}
+}
+
+country_event = {
+	id = 9936
+	title = "EVTNAME9936"
+	desc = "EVTDESC9936"
+	picture = LIBERUM_VETO_eventPicture
+
+	major = yes
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = ARM
+		religion = buddhism
+		has_country_modifier = sarkis_dead
+	}
+
+	mean_time_to_happen = {
+		months = 4
+	}
+
+	option = {
+		name = "EVTOPTA9936"
+		ai_chance = { factor = 10 }
+		add_stability = -2
+		add_prestige = -10
+		kill_leader = {
+			type = general
+		}
+		remove_country_modifier = sarkis_dead
+		HSN = {
+			declare_war_with_cb = {
+				who = ARM
+				casus_belli = cb_independence_war
+			}
+		}
+		ARD = {
+			declare_war_with_cb = {
+				who = ARM
+				casus_belli = cb_independence_war
+			}
+		}
+		TRP = {
+			declare_war_with_cb = {
+				who = ARM
+				casus_belli = cb_independence_war
+			}
+		}
+		BHT = {
+			declare_war_with_cb = {
+				who = ARM
+				casus_belli = cb_independence_war
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTB9936"
+		ai_chance = { factor = 20 }
+		add_stability = -1
+		random_owned_province = {
+			limit = {
+				religion = zoroastrian
+			}
+			spawn_rebels = {
+				type = zoroastrian_rebels
+				size = 2
+			}
+		}
+		remove_country_modifier = sarkis_dead
+	}
+
+	option = {
+		name = "EVTOPTC9936"
+		ai_chance = { factor = 20 }
+		remove_country_modifier = sarkis_dead
+	}
+
+	option = {
+		name = "EVTOPTD9936"
+		ai_chance = { factor = 30 }
+		add_country_modifier = {
+			name = "zirak_tolerance"
+			duration = -1
+		}
+		add_stability = 1
+		remove_country_modifier = sarkis_dead
+	}
+
+	option = {
+		name = "EVTOPTE9936"
+		ai_chance = { factor = 20 }
+		add_stability = 2
+		change_religion = zoroastrian
+		define_ruler = {
+			name = "Bazyan I"
+			dynasty = "Zirak"
+			religion = zoroastrian
+			culture = kurdish
+			age = 46
+			mil = 6
+		}
+		random_owned_province = {
+			limit = {
+				religion = buddhism
+			}
+			spawn_rebels = {
+				type = buddhism_rebels
+				size = 2
+			}
+		}
+		random_owned_province = {
+			limit = {
+				religion = buddhism
+			}
+			spawn_rebels = {
+				type = buddhism_rebels
+				size = 2
+			}
+		}
+		random_owned_province = {
+			limit = {
+				religion = buddhism
+			}
+			spawn_rebels = {
+				type = buddhism_rebels
+				size = 2
+			}
+		}
+	}
+}
+
+country_event = {
+	id = 9937
+	title = "EVTNAME9937"
+	desc = "EVTDESC9937"
+	picture = DEBATE_REPUBLICAN_eventPicture
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTA9937"
+		ai_chance = { factor = 30 }
+		change_government = monarchy
+		add_government_reform = merchants_reform
+	}
+
+	option = {
+		name = "EVTOPTB9937"
+		ai_chance = { factor = 30 }
+		add_prestige = -10
+		IRE = {
+			country_event = { id = 9938 }
+		}
+	}
+
+	option = {
+		name = "EVTOPTC9937"
+		ai_chance = { factor = 30 }
+		change_government = monarchy
+		add_government_reform = merchants_reform
+		random_list = {
+			50 = {
+				define_ruler = {
+				name = Eoin
+        			dynasty = MacIntyre
+        			dip = 4
+        			adm = 1
+      			  	mil = 4
+				age = 39
+				}
+			}
+			25 = {
+				define_ruler = {
+					name = William
+        				dynasty = Bruce
+        				dip = 2
+        				adm = 2
+      			  		mil = 6
+					age = 54
+				}
+			}
+			25 = {
+				define_ruler = {
+					name = Patrick
+        				dynasty = Byrne
+        				dip = 4
+        				adm = 6
+      			  		mil = 2
+					age = 48
+				}
+			} 
+		}
+	}
+
+	option = {
+		name = "EVTOPTD9937"
+		ai_chance = { factor = 10 }
+		add_stability = -1
+		add_prestige = -20
+		hidden_effect = {
+			every_owned_province = {
+				add_province_modifier = {
+					name = disgruntled_nobles
+					duration = 3650
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = 9938
+	title = "EVTNAME9938"
+	desc = "EVTDESC9938"
+	picture = ADVISOR_eventPicture
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTA9937"
+		ai_chance = { factor = 10 }
+		add_prestige = 10
+		SCO = {
+			change_government = monarchy
+			add_government_reform = merchants_reform
+			define_ruler = {
+				name = Liam
+        			dynasty = Boru
+				culture = irish
+        			dip = 1
+        			adm = 4
+      				mil = 1
+				age = 19
+				clear_scripted_personalities = yes
+        			add_ruler_personality = lawgiver_personality
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTB9937"
+		ai_chance = { factor = 10 }
+		add_prestige = 10
+		SCO = {
+			change_government = monarchy
+			add_government_reform = merchants_reform
+			define_ruler = {
+				name = Aoibheann
+        			dynasty = Boru
+				culture = irish
+        			dip = 3
+        			adm = 3
+      				mil = 0
+				age = 14
+				female = yes
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTC9937"
+		ai_chance = { factor = 80 }
+		add_prestige = 20
+		SCO = {
+			change_government = monarchy
+			add_government_reform = merchants_reform
+		}
+		IRE = {
+			create_union = SCO
+		}
+	}
+}
+
+country_event = {
+	id = 9939
+	title = "EVTNAME9939"
+	desc = "EVTDESC9939"
+	picture = COUNTRY_COLLAPSE_eventPicture
+
+	major = yes
+
+	mean_time_to_happen = {
+		months = 3
+	}
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = SPA
+		NOT = {
+			has_ruler = "Juan IX"
+		}
+	}
+
+	option = {
+		name = "EVTOPTA9939"
+		custom_tooltip = "EVTOPTA9939TT"
+		hidden_effect = {
+			every_owned_province = {
+				limit = { area = toledo_area }
+				cede_province = CAT
+				remove_core = SPA
+				add_core = CAT
+			}
+			every_owned_province = {
+				limit = { area = aragon_area }
+				cede_province = NAV
+				remove_core = SPA
+				add_core = NAV
+			}
+			every_owned_province = {
+				limit = { area = castille_area }
+				cede_province = LON
+				remove_core = SPA
+				add_core = LON
+			}
+			every_owned_province = {
+				limit = { area = leon_area }
+				cede_province = POR
+				remove_core = SPA
+				add_core = POR
+			}
+			every_owned_province = {
+				limit = { area = asturias_area }
+				cede_province = NAV
+				remove_core = SPA
+				add_core = NAV
+			}
+			POR = {
+				country_event = { id = 9940 }
+				define_ruler = {
+					name = "Carlos VI"
+					dynasty = "da Conceicao"
+					adm = 2	
+					mil = 2
+					dip = 5
+				}
+			}
+			GAL = {
+				country_event = { id = 9940 }
+				define_ruler = {
+					name = "Maruxa II"
+					dynasty = "Henrique Luis"
+					female = yes
+					mil = -2
+					adm = 1
+				}
+			}
+			LON = {
+				country_event = { id = 9940 }
+				define_ruler = {
+					name = "Alfonso VIII"
+					dynasty = "de Salamanca"
+				}
+			}
+			CAT = {
+				country_event = { id = 9940 }
+				define_ruler = {
+					name = "Guillem IV"
+					dynasty = "d'Urgell"
+					mil = -1
+					adm = 1
+					dip = 2
+				}
+			}
+			NAV = {
+				country_event = { id = 9940 }
+				define_ruler = {
+					name = "Luis XIV"
+					dynasty = "de Casablanca"
+				}
+			}
+		}
+	}
+	option = {
+		name = "EVTOPTB9939"
+		custom_tooltip = "EVTOPTB9939TT"
+		hidden_effect = {
+			POR = {
+				declare_war_with_cb = {
+					who = SPA
+					casus_belli = cb_independence_war
+				}
+				define_ruler = {
+					name = "Carlos VI"
+					dynasty = "da Conceicao"
+					adm = 2	
+					mil = 2
+					dip = 5
+				}
+			}
+			GAL = {
+				declare_war_with_cb = {
+					who = SPA
+					casus_belli = cb_independence_war
+				}
+				define_ruler = {
+					name = "Maruxa II"
+					dynasty = "Henrique Luis"
+					female = yes
+					mil = -2
+					adm = 1
+				}
+			}
+			LON = {
+				declare_war_with_cb = {
+					who = SPA
+					casus_belli = cb_independence_war
+				}
+				define_ruler = {
+					name = "Alfonso VIII"
+					dynasty = "de Salamanca"
+				}
+			}
+			CAT = {
+				declare_war_with_cb = {
+					who = SPA
+					casus_belli = cb_independence_war
+				}
+				define_ruler = {
+					name = "Guillem IV"
+					dynasty = "d'Urgell"
+					mil = -1
+					adm = 1
+					dip = 2
+				}
+			}
+			NAV = {
+				declare_war_with_cb = {
+					who = SPA
+					casus_belli = cb_independence_war
+				}
+				define_ruler = {
+					name = "Luis XIV"
+					dynasty = "de Casablanca"
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = 9940
+	title = "EVTNAME9940"
+	desc = "EVTDESC9940"
+	picture = COURT_eventPicture
+	
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTA9940"
+	}
+}
+
+country_event = {
+	id = 9941
+	title = "EVTNAME9941"
+	desc = "EVTDESC9941"
+	picture = ELECTION_REPUBLICAN_eventPicture
+	
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTA9941"
+		ai_chance = { factor = 0.25 }
+		custom_tooltip = "EVTOPTA9941TT"
+		add_country_modifier = {
+			name = western_direction
+			duration = -1
+		}
+	}
+
+	option = {
+		name = "EVTOPTB9941"
+		ai_chance = { factor = 0.75 }
+		custom_tooltip = "EVTOPTB9941TT"
+		add_country_modifier = {
+			name = eastern_direction
+			duration = -1
+		}
+	}
+}
+
+country_event = {
+	id = 9942
+	title = "EVTNAME9942"
+	desc = "EVTDESC9942"
+	picture = GOOD_WITH_MONARCH_eventPicture
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTA9942"
+	}
+}
+
+country_event = {
+	id = 9943
+	title = "EVTNAME9943"
+	desc = "EVTDESC9943"
+	picture = FLAGSHIP_CAPTURED_eventPicture
+
+	fire_only_once = yes
+
+	mean_time_to_happen = {
+		months = 1
+	}
+
+	trigger = {
+		tag = BYZ
+		CRT = {
+			exists = yes
+		}
+	}
+
+	option = {
+		name = "EVTOPTA9943"
+		ai_chance = { factor = 0.8 }
+		add_stability = -1
+		CRT = {
+			declare_war_with_cb = {
+				who = BYZ
+				casus_belli = cb_independence_war
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTB9943"
+		ai_chance = { factor = 0.2 }
+		add_prestige = -20
+		revoke_core = 163
+		CRT = {
+			country_event = {
+				id = 9944
+			}
+		}
+	}
+}
+
+country_event = {
+	id = 9944
+	title = "EVTNAME9944"
+	desc = "EVTDESC9944"
+	picture = GOOD_WITH_MONARCH_eventPicture
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTC9944"
+		add_prestige = 20
+		add_country_modifier = {
+			name = "themistocles_triumph"
+			duration = -1
+		}
+		change_tag = GRE
+		macedonia_area = {
+			type = all
+			add_permanent_claim = GRE
+		}
+		northern_greece_area = {
+			type = all
+			add_permanent_claim = GRE
+		}
+		thrace_area = {
+			type = all
+			add_permanent_claim = GRE
+		}
+		morea_area = {
+			type = all
+			add_permanent_claim = GRE
+		}
+	}
+}
+
+country_event = {
+	id = 9946
+	title = "EVTNAME9944"
+	desc = "EVTDESC9944"
+	picture = GOOD_WITH_MONARCH_eventPicture
+
+	trigger = {
+		tag = CRT
+		is_at_war = no
+		is_subject = no
+		is_year = 1446
+		owns_core_province = 163
+		NOT = {
+			has_country_modifier = { themistocles_triumph }
+		}
+	}
+
+	fire_only_once = yes
+
+	option = {
+		name = "EVTOPTC9944"
+		add_prestige = 10
+		change_tag = GRE
+		macedonia_area = {
+			type = all
+			add_permanent_claim = GRE
+		}
+		northern_greece_area = {
+			type = all
+			add_permanent_claim = GRE
+		}
+		thrace_area = {
+			type = all
+			add_permanent_claim = GRE
+		}
+		morea_area = {
+			type = all
+			add_permanent_claim = GRE
+		}
+	}
+}
+
+country_event = {
+	id = 9945
+	title = "EVTNAME9945"
+	desc = "EVTDESC9945"
+	picture = LAND_MILITARY_eventPicture
+
+	trigger = {
+		tag = BYZ
+		is_subject = no
+		is_year = 1446
+		owns_core_province = 163
+		CRT = {
+			exists = no
+		}
+	}
+
+	fire_only_once = yes
+
+	option = {
+		name = "EVTOPTA9945"
+		163 = {
+			change_religion = buddhism
+		}
+		add_country_modifier = {
+			name = "old_believers"
+			duration = -1
+		}
+	}
+}
+
+country_event = {
+	id = 9955
+	title = "EVTNAME9955"
+	desc = "EVTDESC9955"
+	picture = CULTURE_eventPicture
+
+	trigger = {
+		owns_core_province = 429
+		primary_culture = persian
+		is_year = 1450
+	}
+
+	mean_time_to_happen = {
+		months = 60
+	}
+	
+	fire_only_once = yes
+	
+	option = {
+		name = "EVTOPTA9955"
+		ai_chance = { factor = 0.67 }
+		add_prestige = 10
+		add_stability = -2
+		429 = {
+			add_institution_embracement = {
+				which = renaissance
+				value = 100
+			}
+		}
+		add_country_modifier = {	
+			name = "persian_renaissance"
+			duration = 36500
+		}
+		every_known_country = {
+			limit = {
+				OR = {
+					primary_culture = persian
+					primary_culture = khorasani
+					primary_culture = mazandarani
+				}
+			}
+			country_event = {
+				id = 9956
+			}
+		}
+		hidden_effect = {
+			every_known_country = {
+				limit = {
+					NOT = {
+						primary_culture = persian
+						primary_culture = khorasani
+						primary_culture = mazandarani
+					}
+				}
+				country_event = {
+					id = 9956
+				}	
+			}
+		}
+
+	}
+
+	option = {
+		name = "EVTOPTB9955"
+		ai_chance = { factor = 0.33 }
+		add_prestige = -10
+		add_stability = 1
+	}
+}
+
+country_event = {
+	id = 9956
+	title = "EVTNAME9956"
+	desc = "EVTDESC9956"
+	picture = UNIVERSITY_eventPicture
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTA9956"
+		if = {
+			limit = {
+				OR = {
+					primary_culture = persian
+					primary_culture = khorasani
+					primary_culture = mazandarani
+				}
+			}
+			add_country_modifier = {	
+				name = "persian_renaissance"
+				duration = 36500
+			}
+		}
+	}
+}
+
+country_event = {
+	id = 9959
+	title = "EVTNAME9959"
+	desc = "EVTDESC9959"
+	picture = FEAST_eventPicture
+
+	trigger = {
+		religion = cult_of_dionysus
+		NOT = {
+			has_country_modifier = 3_verve
+			has_country_modifier = 2_verve
+			has_country_modifier = 1_verve
+			has_country_modifier = 0_verve
+			has_country_modifier = -1_verve
+			has_country_modifier = -2_verve
+			has_country_modifier = -3_verve
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	option = {
+		name = "EVTOPTA9959"
+		add_country_modifier = {
+			name = 3_verve
+			duration = -1
+		}
+	}
+}
+
+country_event = {
+	id = 9960
+	title = "EVTNAME9960"
+	desc = "EVTDESC9960"
+	picture = PLAGUE_eventPicture
+
+	trigger = {
+		religion = cult_of_dionysus
+		OR = {
+			has_country_modifier = 3_verve
+			has_country_modifier = 2_verve
+			has_country_modifier = 1_verve
+			has_country_modifier = 0_verve
+			has_country_modifier = -1_verve
+			has_country_modifier = -2_verve
+		}
+	}
+
+	mean_time_to_happen = {
+		months = 12
+	}
+
+	option = {
+		name = "EVTOPTA9960"
+		if = {
+			limit = {
+				has_country_modifier = 3_verve
+			}
+			remove_country_modifier = 3_verve
+			add_country_modifier = {
+				name = 2_verve
+				duration = -1
+			}
+			hidden_effect = {
+				add_country_modifier = {
+					name = "debug"
+					duration = 7
+				}
+			}
+		}
+		if = {
+			limit = {
+				has_country_modifier = 2_verve
+				NOT = {
+					has_country_modifier = debug
+				}
+			}
+			remove_country_modifier = 2_verve
+			add_country_modifier = {
+				name = 1_verve
+				duration = -1
+			}
+			hidden_effect = {
+				add_country_modifier = {
+					name = "debug"
+					duration = 7
+				}
+			}
+		}
+		if = {
+			limit = {
+				has_country_modifier = 1_verve
+				NOT = {
+					has_country_modifier = debug
+				}
+			}
+			remove_country_modifier = 1_verve
+			add_country_modifier = {
+				name = 0_verve
+				duration = -1
+			}
+			hidden_effect = {
+				add_country_modifier = {
+					name = "debug"
+					duration = 7
+				}
+			}
+		}
+		if = {
+			limit = {
+				has_country_modifier = 0_verve
+				NOT = {
+					has_country_modifier = debug
+				}
+			}
+			remove_country_modifier = 0_verve
+			add_country_modifier = {
+				name = -1_verve
+				duration = -1
+			}
+			hidden_effect = {
+				add_country_modifier = {
+					name = "debug"
+					duration = 7
+				}
+			}
+		}
+		if = {
+			limit = {
+				has_country_modifier = -1_verve
+				NOT = {
+					has_country_modifier = debug
+				}
+			}
+			remove_country_modifier = -1_verve
+			add_country_modifier = {
+				name = -2_verve
+				duration = -1
+			}
+			hidden_effect = {
+				add_country_modifier = {
+					name = "debug"
+					duration = 7
+				}
+			}
+		}
+		if = {
+			limit = {
+				has_country_modifier = -2_verve
+				NOT = {
+					has_country_modifier = debug
+				}
+			}
+			remove_country_modifier = -2_verve
+			add_country_modifier = {
+				name = -3_verve
+				duration = -1
+			}
+			hidden_effect = {
+				add_country_modifier = {
+					name = "debug"
+					duration = 7
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = celtic.1
+	title = celtic.1.t
+	desc = celtic.1.d
+	picture = LAND_MILITARY_eventPicture
+
+	trigger = {
+		religion = celtic
+		NOT = {
+			OR = {
+				has_country_modifier = divine_supremacy_doctrine
+				has_country_modifier = great_man_doctrine
+				has_country_modifier = blessed_land_doctrine
+				has_country_modifier = chosen_people_doctrine
+			}
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	option = {
+		name = celtic.1.a
+		add_country_modifier = {
+			ai_chance = {
+			factor = 0.25
+			modifier = {
+				factor = 3
+				personality = ai_balanced
+			}
+		}
+			name = "divine_supremacy_doctrine"
+			duration = 9125
+		}
+	}
+
+	option = {
+		name = celtic.1.b
+		ai_chance = {
+			factor = 0.25
+			modifier = {
+				factor = 3
+				personality = ai_militarist
+			}
+		}
+		add_country_modifier = {
+			name = "great_man_doctrine"
+			duration = 9125
+		}
+	}
+
+	option = {
+		name = celtic.1.c
+		ai_chance = {
+			factor = 0.25
+			modifier = {
+				factor = 3
+				personality = ai_administrator
+			}
+		}
+		add_country_modifier = {
+			name = "blessed_land_doctrine"
+			duration = 9125
+		}
+	}
+
+	option = {
+		name = celtic.1.e
+		ai_chance = {
+			factor = 0.25
+			modifier = {
+				factor = 3
+				personality = ai_colonialist
+			}
+		}
+		add_country_modifier = {
+			name = "chosen_people_doctrine"
+			duration = 9125
+		}
+	}
+}
+
+country_event = {
+	id = 9962
+	title = "EVTNAME9962"
+	desc = "EVTDESC9962"
+	picture = BORDER_TENSION_eventPicture
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTA9962"
+		ai_chance = { factor = 0.2 }
+		declare_war_with_cb = {
+			who = CIR
+			casus_belli = cb_insult
+		}
+		add_opinion = {
+			who = CIR
+			modifier = opinion_invasion
+		}
+	}
+
+	option = {
+		name = "EVTOPTB9962"
+		ai_chance = { factor = 0.8 }
+		add_opinion = {
+			who = CIR
+			modifier = opinion_invasion
+		}
+	}
+}
+
+country_event = {
+	id = 9963
+	title = "EVTNAME9963"
+	desc = "EVTDESC9963"
+	picture = BORDER_TENSION_eventPicture
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTA9963"
+		ai_chance = { factor = 0.2 }
+		declare_war_with_cb = {
+			who = GAZ
+			casus_belli = cb_insult
+		}
+		add_opinion = {
+			who = GAZ
+			modifier = opinion_invasion
+		}
+	}
+
+	option = {
+		name = "EVTOPTB9963"
+		ai_chance = { factor = 0.8 }
+		add_opinion = {
+			who = GAZ
+			modifier = opinion_invasion
+		}
+	}
+}
+
+country_event = {
+	id = 9964
+	title = "EVTNAME9964"
+	desc = "EVTDESC9964"
+	picture = DIPLOMACY_eventPicture
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTA9964"
+		ai_chance = {
+			factor = 0.75
+			modifier = {
+				factor = 0.5
+				army_size_percentage = 1
+			}
+			modifier = {
+				factor = 0.5
+				prestige = 15
+			}
+		}
+
+		IRE = {
+			create_union = SCO
+		}
+	}
+
+	option = {
+		name = "EVTOPTB9964"
+		ai_chance = { factor = 0.25 }
+		lowlands_area = {
+			type = all
+			add_permanent_claim = IRE
+		}
+		highlands_area = {
+			type = all
+			add_permanent_claim = IRE
+		}
+		kingdom_of_the_isles_area = {
+			type = all
+			add_permanent_claim = IRE
+		}
+		IRE = {
+			add_opinion = {
+				who = SCO
+				modifier = insulted
+			}
+		}
+	}
+}
+
+country_event = {
+	id = 9965
+	title = "EVTNAME9965"
+	desc = "EVTDESC9965"
+	picture = NEW_HEIR_eventPicture
+
+	trigger = {
+		tag = GUY
+		at_peace = yes
+		is_year = 1445
+		has_ruler = "Theodore IV"
+		BER = {
+			has_ruler = "Louis II"
+			has_heir = yes
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 1
+	}
+
+	fire_only_once = yes
+
+	option = {
+		name = "EVTOPTA9965"
+		ai_chance = { factor = 0 }
+		BER = {
+			add_opinion = {
+				who = GUY
+				modifier = honored_alliance
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTB9965"
+		ai_chance = { factor = 1 }
+		BER = {
+			kill_heir = yes
+			add_stability = -1
+		}
+	}
+}
+
+country_event = {
+	id = 9966
+	title = "EVTNAME9966"
+	desc = "EVTDESC9966"
+	picture = ASSASSINATION_eventPicture
+
+	trigger = {
+		tag = GUY
+		has_ruler = "Theodore IV"
+		BER = {
+			has_ruler = "Louis II"
+			has_heir = no
+		}
+	}
+
+	mean_time_to_happen = {
+		months = 60
+	}
+
+	fire_only_once = yes
+
+	option = {
+		name = "EVTOPTA9966"
+		ai_chance = { factor = 0 }
+		BER = {	
+			add_stability = 1
+		}
+		add_prestige = 10
+	}
+	
+	option = {
+		name = "EVTOPTB9966"
+		ai_chance = { factor = 1 }
+		BER = {
+			kill_ruler = yes
+		}
+		create_union = BER
+	}
+}
+			
+country_event = {
+	id = 9967
+	title = "EVTNAME9967"
+	desc = "EVTDESC9967"
+	picture = DIPLOMACY_eventPicture
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTA9967"
+		ai_chance = { factor = 0.8 }
+		add_country_modifier = {
+			name = "viipuri_agreement"
+			duration = -1
+		}
+		add_years_of_income = 1
+		SMI = {
+			add_country_modifier = {
+				name = "viipuri_agreement"
+				duration = -1
+			}
+			add_years_of_income = 1
+		}
+		KRL = {
+			add_country_modifier = {
+				name = "viipuri_agreement"
+				duration = -1
+			}
+			add_years_of_income = 1
+		}
+		GOT = {
+			create_guarantee = FIN
+			create_guarantee = SMI
+			create_guarantee = KRL
+		}
+		1930 = {
+			cede_province = GOT
+			add_core = GOT
+			remove_core = FIN
+		}
+		27 = {
+			cede_province = GOT
+			add_core = GOT
+		}
+		add_stability = -1
+	}
+
+	option = {
+		name = "EVTOPTB9967"
+		ai_chance = { factor = 0.2 }
+		1930 = {
+			add_permanent_claim = GOT
+		}
+		27 = {
+			add_permanent_claim = GOT
+		}
+		add_stability = 1
+	}
+}
+
+country_event = {
+	id = 9968
+	title = "EVTNAME9968"
+	desc = "EVTDESC9968"
+	picture = COURT_eventPicture
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTA9968"
+		ai_chance = { factor = 1 }
+		add_stability = 2
+		change_tag = CRO
+	}
+		
+	option = {
+		name = "EVTOPTB9968"
+		ai_chance = { factor = 0 }
+		add_stability = -1
+		random_owned_province = {
+			limit = {
+				culture = croatian
+			}
+			spawn_rebels = {
+				type = nationalist_rebels
+				size = 3
+			}
+		}
+		random_owned_province = {
+			limit = {
+				culture = croatian
+			}
+			spawn_rebels = {
+				type = nationalist_rebels
+				size = 3
+			}
+		}
+		random_owned_province = {
+			limit = {
+				culture = croatian
+			}
+			spawn_rebels = {
+				type = nationalist_rebels
+				size = 3
+			}
+		}
+	}
+}
+
+country_event = {
+	id = 9969
+	title = "EVTNAME9969"
+	desc = "EVTDESC9969"
+	picture = ST_PETERS_CHURCH_eventPicture
+
+	trigger = {
+		religion = cult_of_jupiter
+		culture_group = latin
+		has_institution = renaissance
+		NOT = {
+			tag = URB
+		}
+		NOT = {
+			has_country_modifier = roman_restoration_society
+		}
+	}
+
+	mean_time_to_happen = {
+		months = 60
+	}
+
+	option = {
+		name = "EVTOPTA9969"
+		add_prestige = 10
+		add_stability = 1
+	}
+
+	option = {
+		name = "EVTOPTB9969"
+		add_prestige = -10
+		add_stability = -1
+		add_country_modifier = {
+			name = "roman_restoration_society"
+			duration = -1
+		}
+	}
+}
+
+country_event = {
+	id = 9970
+	title = "EVTNAME9970"
+	desc = "EVTDESC9970"
+	picture = BORDER_TENSION_eventPicture
+
+	trigger = {
+		tag = TRA
+		government = theocracy
+		OR = {
+			war_exhaustion = 3
+			NOT = {
+				stability = 0
+			}
+			religion = slavic
+		}
+		NOT = {
+			full_idea_group = religious_ideas
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	option = {
+		name = "EVTOPTA9970"
+		define_ruler = {	
+			name = "Janos I"
+			dynasty = "Hunyadi"
+			mil = 3
+			leader = {	
+				name = "Janos Hunyadi"	
+				type = general	
+				fire = 4 
+				shock = 4	
+				manuever = 4	
+				siege = 1	
+				death_date = 1456.8.11 
+			}
+		}
+		change_religion = slavic
+		change_government = monarchy
+		add_government_reform = autocracy_reform
+		RMN = {
+			country_event = {
+				id = 9971
+			}	
+		}	
+	}
+}
+
+country_event = {
+	id = 9971
+	title = "EVTNAME9971"
+	desc = "EVTDESC9971"
+	picture = NOT_DISCIPLINED_SOLDIERS
+
+	is_triggered_only = yes
+
+	major = yes
+
+	option = {
+		name = "EVTOPTA9971"
+		ai_chance = { factor = 1 }
+		add_prestige = 10
+		free_vassal = TRA
+		declare_war_with_cb = {
+			who = TRA
+			casus_belli = cb_crusade
+		}
+		TRA = {
+			every_owned_province = {
+				limit = {
+					religion = vajrayana
+				}
+				cede_province = RMN
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTB9971"
+		ai_chance = { factor = 0 }
+		add_prestige = -10
+		TRA = {
+			every_owned_province = {
+				limit = {
+					religion = vajrayana
+				}
+				cede_province = RMN
+			}
+		}
+	}
+}
+
+country_event = {
+	id = 9972
+	title = "EVTNAME9972"
+	desc = "EVTNAME9972"
+	picture = DIPLOMACY_eventPicture
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTA9972"
+		ai_chance = { factor = 0.25 }
+		free_vassal = TRA
+		create_alliance = TRA
+	}
+	
+	option = {
+		name = "EVTOPTB9972"
+		ai_chance = { factor = 0.75 }
+		TRA = {
+			add_opinion_modifier = {
+				who = RMN
+				modifier = opinion_invasion
+			}
+		}
+	}
+}
+
+country_event = {
+	id = 9973
+	title = "EVTNAME9973"
+	desc = "EVTNAME9973"
+	picture = DIPLOMACY_eventPicture
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTA9973"
+		ai_chance = { factor = 0.75 }
+		create_alliance = TRA
+	}
+	
+	option = {
+		name = "EVTOPTB9973"
+		ai_chance = { factor = 0.25 }
+		add_stability = -1
+	}
+}
+
+country_event = {
+	id = suomenusko.1
+	title = suomenusko.1.t
+	desc = suomenusko.1.d
+	picture = FARMING_eventPicture
+
+	trigger = {
+		religion = suomi
+		NOT = {
+			has_country_modifier = suomi_bear
+			has_country_modifier = suomi_elk
+			has_country_modifier = suomi_fox
+			has_country_modifier = suomi_swan
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	option = {
+		name = suomenusko.1.a
+		add_country_modifier = {
+			name = suomi_bear
+			duration = 9125
+		}
+	}
+	
+	option = {
+		name = suomenusko.1.b
+		add_country_modifier = {
+			name = suomi_elk
+			duration = 9125
+		}
+	}
+
+	option = {
+		name = suomenusko.1.c
+		add_country_modifier = {
+			name = suomi_fox
+			duration = 9125
+		}
+	}
+
+	option = {
+		name = suomenusko.1.da
+		add_country_modifier = {
+			name = suomi_swan
+			duration = 9125
+		}
+	}
+}
+		

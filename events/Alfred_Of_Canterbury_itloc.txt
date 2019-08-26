@@ -1,0 +1,835 @@
+namespace = alfredofcanterbury
+
+country_event = {
+	id = alfredofcanterbury.1
+	title = alfredofcanterbury.1.t
+	desc = alfredofcanterbury.1.d
+	picture = REFORM_eventPicture
+
+	major = yes
+
+	trigger = {
+		has_institution = printing_press
+		religion = norse_pagan_reformed
+		owns_core_province = 235
+		235 = {
+			religion = norse_pagan_reformed
+		}
+		any_owned_province = {
+			can_have_center_of_reformation_trigger = {
+				RELIGION = freyite
+			}
+		}
+	}
+
+	mean_time_to_happen = {
+		months = 60
+	}
+
+	option = {
+		name = alfredofcanterbury.1.a
+		ai_chance = { factor = 0.25 }
+		add_stability = 1
+		add_country_modifier = {
+			name = "freyite_debate"
+			duration = -1
+		}
+		235 = {
+			change_religion = freyite
+			add_reform_center = freyite
+			add_permanent_province_modifier = {
+				name = "religious_zeal_at_conv"
+				duration = 9000
+			}
+		}
+	}
+
+	option = {
+		name = alfredofcanterbury.1.b
+		ai_chance = { factor = 0.5 }
+		highlight = yes
+		trigger = {
+			has_parliament = yes
+		}
+		custom_tooltip = "alfredofcanterbury.1.b.tt"
+		country_event = {
+			id = alfredofcanterbury.3
+		}
+	}
+
+	option = {
+		name = alfredofcanterbury.1.c
+		ai_chance = { factor = 0.25 }
+		add_stability = -1
+		every_known_country = {
+			limit = {
+				owns_core_province = 4145
+			}
+			country_event = {
+				id = alfredofcanterbury.2
+			}
+		}
+	}
+}
+
+country_event = {
+	id = alfredofcanterbury.2
+	title = alfredofcanterbury.2.t
+	desc = alfredofcanterbury.2.d
+	picture = SHIP_SAILING_eventPicture
+
+	is_triggered_only = yes
+
+	trigger = {
+		religion = norse_pagan_reformed
+	}
+
+	option = {
+		name = alfredofcanterbury.2.a
+		if = {
+			limit = {
+				owns_core_province = 4145
+			}
+			4145 = {
+				change_religion = freyite
+				add_reform_center = freyite
+				add_permanent_province_modifier = {
+					name = "religious_zeal_at_conv"
+					duration = 9000
+				}
+			}
+		}
+		if = {
+			limit = {
+				owns_core_province = 12
+			}
+			12 = {
+				change_religion = freyite
+				add_reform_center = freyite
+				add_permanent_province_modifier = {
+					name = "religious_zeal_at_conv"
+					duration = 9000
+				}
+			}
+		}
+		if = {
+			limit = {
+				owns_core_province = 25
+			}
+			25 = {
+				change_religion = freyite
+				add_reform_center = freyite
+				add_permanent_province_modifier = {
+					name = "religious_zeal_at_conv"
+					duration = 9000
+				}
+			}
+		}
+		if = {
+			limit = {
+				owns_core_province = 43
+			}
+			43 = {
+				change_religion = freyite
+				add_reform_center = freyite
+				add_permanent_province_modifier = {
+					name = "religious_zeal_at_conv"
+					duration = 9000
+				}
+			}
+		}
+	}
+
+	option = {
+		name = alfredofcanterbury.2.b
+		if = {
+			limit = {
+				owns_core_province = 4145
+			}
+			every_known_country = {
+				limit = {
+					owns_core_province = 12
+				}
+				country_event = {
+					id = alfredofcanterbury.2
+				}
+			}
+		}
+			
+		}
+		if = {
+			limit = {
+				owns_core_province = 12
+			}
+			every_known_country = {
+				limit = {
+					owns_core_province = 25
+				}
+				country_event = {
+					id = alfredofcanterbury.2
+				}
+			}
+		}
+		if = {
+			limit = {
+				owns_core_province = 25
+			}
+			every_known_country = {
+				limit = {
+					owns_core_province = 43
+				}
+				country_event = {
+					id = alfredofcanterbury.2
+				}
+			}
+		}
+		if = {
+			limit = {
+				owns_core_province = 43
+			}
+			add_stability = -1
+		}
+	}
+}
+
+country_event = {
+	id = alfredofcanterbury.3
+	title = alfredofcanterbury.3.t
+	desc = alfredofcanterbury.3.d
+	picture = RELIGION_eventPicture
+
+	is_triggered_only = yes
+
+	option = {
+		name = alfredofcanterbury.3.a
+		highlight = yes
+		trigger = {
+			junior_union_with = NOR
+		}
+		change_religion = freyite
+		4145 = {
+			change_religion = freyite
+			add_reform_center = freyite
+			add_permanent_province_modifier = {
+				name = "religious_zeal_at_conv"
+				duration = 9000
+			}
+		}
+		NOR = {
+			country_event = {
+				id = alfredofcanterbury.4
+			}
+		}
+	}
+
+	option = {
+		name = alfredofcanterbury.3.b
+		add_country_modifier = {
+			name = "freyite_debate"
+			duration = -1
+		}
+		4145 = {
+			change_religion = freyite
+			add_reform_center = freyite
+			add_permanent_province_modifier = {
+				name = "religious_zeal_at_conv"
+				duration = 9000
+			}
+		}
+	}
+
+	option = { 
+		name = alfredofcanterbury.3.c
+		4145 = {
+			spawn_rebels = {
+				type = freyite_rebels
+				size = 3
+			}
+			spawn_rebels = {
+				type = freyite_rebels
+				size = 3
+			}
+			spawn_rebels = {
+				type = freyite_rebels
+				size = 3
+			}
+			
+		}
+	}
+}
+
+country_event = {
+	id = alfredofcanterbury.4
+	title = alfredofcanterbury.4.t
+	desc = alfredofcanterbury.4.d
+	picture = BORDER_TENSION_eventPicture
+
+	is_triggered_only = yes
+
+	option = {
+		name = alfredofcanterbury.4.a
+		ai_chance = { factor = 1 }
+		ENG = {
+			declare_war_with_cb = {
+				who = ROOT
+				casus_belli = cb_independence
+			}
+			define_ruler = {
+				name = "James I"
+				dynasty = "Shrewsbury"
+				adm = 2	
+				dip = -2
+				mil = -1
+			}
+		}
+	}
+
+	option = {
+		name = alfredofcanterbury.4.b
+		ai_chance = { factor = 0 }
+		stability = -1
+		ENG = {
+			define_ruler = {
+				name = "James I"
+				dynasty = "Shrewsbury"
+				adm = 2	
+				dip = -2
+				mil = -1
+			}
+		}
+	}
+}
+
+country_event = {
+	id = alfredofcanterbury.5
+	title = alfredofcanterbury.5.t
+	desc = alfredofcanterbury.5.d
+	picture = REFORM_eventPicture
+
+	trigger = {
+		religion = norse_pagan_reformed
+		NOT = {
+			has_country_modifier = freya_supressed
+		}
+		any_known_country = {
+			religion = freyite
+		}
+	}
+
+	mean_time_to_happen = {
+		months = 120
+	}
+
+	option = {
+		name = alfredofcanterbury.5.a	
+		ai_chance = {
+			factor = 0.1
+			modifier = {
+				factor = 5
+				has_personal_deity = freya
+			}
+		}
+		change_religion = freyite
+		any_owned_province = {
+			change_religion = freyite
+			add_reform_center = freyite
+			add_permanent_province_modifier = {
+				name = "religious_zeal_at_conv"
+				duration = 9000
+			}
+		}
+		add_stability = -1
+	}
+
+	option = {
+		name = alfredofcanterbury.5.b
+		ai_chance = { factor = 0.9 }
+		add_country_modifier = {
+			name = "freya_supressed"
+			duration = -1
+		}
+	}
+}
+
+country_event = {
+	id = alfredofcanterbury.6
+	title = alfredofcanterbury.6.t
+	desc = alfredofcanterbury.6.d
+	picture = POPE_PREACHING_eventPicture
+
+	trigger = {
+		religion = freyite
+		NOT = {
+			OR = {
+				has_country_modifier = -5_prosperity
+				has_country_modifier = -4_prosperity
+				has_country_modifier = -3_prosperity
+				has_country_modifier = -2_prosperity
+				has_country_modifier = -1_prosperity
+				has_country_modifier = 0_prosperity
+				has_country_modifier = 1_prosperity
+				has_country_modifier = 2_prosperity
+				has_country_modifier = 3_prosperity
+				has_country_modifier = 4_prosperity
+				has_country_modifier = 5_prosperity	
+			}
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	option = {
+		name = alfredofcanterbury.6.a
+		add_country_modifier = {
+			name = "0_prosperity"
+			duration = -1
+		}
+	}
+}
+
+country_event = {
+	id = alfredofcanterbury.7
+	title = alfredofcanterbury.7.t
+	desc = alfredofcanterbury.7.d
+	picture = FARMING_eventPicture
+
+	trigger = {
+		religion = freyite
+		OR = {
+			has_country_modifier = -5_prosperity
+			has_country_modifier = -4_prosperity
+			has_country_modifier = -3_prosperity
+			has_country_modifier = -2_prosperity
+			has_country_modifier = -1_prosperity
+			has_country_modifier = 0_prosperity
+			has_country_modifier = 1_prosperity
+			has_country_modifier = 2_prosperity
+			has_country_modifier = 3_prosperity
+			has_country_modifier = 4_prosperity	
+		}	
+		is_at_war = no
+	}
+
+	mean_time_to_happen = {
+		months = 60
+	}
+
+	option = {
+		name = alfredofcanterbury.7.a
+		if = {
+			limit = {
+				has_country_modifier = -5_prosperity
+				NOT = {
+					has_country_modifier = prosperity_debug
+				}
+			}
+			remove_country_modifier = -5_prosperity
+			add_country_modifier = {
+				name = -4_prosperity
+				duration = -1
+			}
+			hidden_effect = {
+				add_country_modifier = {
+					name = prosperity_debug
+					duration = 1
+				}
+			}
+		}
+		if = {
+			limit = {
+				has_country_modifier = -4_prosperity
+				NOT = {
+					has_country_modifier = prosperity_debug
+				}
+			}
+			remove_country_modifier = -4_prosperity
+			add_country_modifier = {
+				name = -3_prosperity
+				duration = -1
+			}
+			hidden_effect = {
+				add_country_modifier = {
+					name = prosperity_debug
+					duration = 1
+				}
+			}
+		}
+		if = {
+			limit = {
+				has_country_modifier = -3_prosperity
+				NOT = {
+					has_country_modifier = prosperity_debug
+				}
+			}
+			remove_country_modifier = -3_prosperity
+			add_country_modifier = {
+				name = -2_prosperity
+				duration = -1
+			}
+			hidden_effect = {
+				add_country_modifier = {
+					name = prosperity_debug
+					duration = 1
+				}
+			}
+		}
+		if = {
+			limit = {
+				has_country_modifier = -2_prosperity
+				NOT = {
+					has_country_modifier = prosperity_debug
+				}
+			}
+			remove_country_modifier = -2_prosperity
+			add_country_modifier = {
+				name = -1_prosperity
+				duration = -1
+			}
+			hidden_effect = {
+				add_country_modifier = {
+					name = prosperity_debug
+					duration = 1
+				}
+			}
+		}	
+		if = {
+			limit = {
+				has_country_modifier = -1_prosperity
+				NOT = {
+					has_country_modifier = prosperity_debug
+				}
+			}
+			remove_country_modifier = -1_prosperity
+			add_country_modifier = {
+				name = 0_prosperity
+				duration = -1
+			}
+			hidden_effect = {
+				add_country_modifier = {
+					name = prosperity_debug
+					duration = 1
+				}
+			}
+		}
+		if = {
+			limit = {
+				has_country_modifier = 0_prosperity
+				NOT = {
+					has_country_modifier = prosperity_debug
+				}
+			}
+			remove_country_modifier = 0_prosperity
+			add_country_modifier = {
+				name = 1_prosperity
+				duration = -1
+			}
+			hidden_effect = {
+				add_country_modifier = {
+					name = prosperity_debug
+					duration = 1
+				}
+			}
+		}	
+		if = {
+			limit = {
+				has_country_modifier = 1_prosperity
+				NOT = {
+					has_country_modifier = prosperity_debug
+				}
+			}
+			remove_country_modifier = 1_prosperity
+			add_country_modifier = {
+				name = 2_prosperity
+				duration = -1
+			}
+			hidden_effect = {
+				add_country_modifier = {
+					name = prosperity_debug
+					duration = 1
+				}
+			}
+		}
+		if = {
+			limit = {
+				has_country_modifier = 2_prosperity
+				NOT = {
+					has_country_modifier = prosperity_debug
+				}
+			}
+			remove_country_modifier = 2_prosperity
+			add_country_modifier = {
+				name = 3_prosperity
+				duration = -1
+			}
+			hidden_effect = {
+				add_country_modifier = {
+					name = prosperity_debug
+					duration = 1
+				}
+			}
+		}	
+		if = {
+			limit = {
+				has_country_modifier = 3_prosperity
+				NOT = {
+					has_country_modifier = prosperity_debug
+				}
+			}
+			remove_country_modifier = 3_prosperity
+			add_country_modifier = {
+				name = 4_prosperity
+				duration = -1
+			}
+			hidden_effect = {
+				add_country_modifier = {
+					name = prosperity_debug
+					duration = 1
+				}
+			}
+		}	
+		if = {
+			limit = {
+				has_country_modifier = 4_prosperity
+				NOT = {
+					has_country_modifier = prosperity_debug
+				}
+			}
+			remove_country_modifier = 4_prosperity
+			add_country_modifier = {
+				name = 5_prosperity
+				duration = -1
+			}
+			hidden_effect = {
+				add_country_modifier = {
+					name = prosperity_debug
+					duration = 1
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = alfredofcanterbury.8
+	title = alfredofcanterbury.8.t
+	desc = alfredofcanterbury.8.d
+	picture = FAMINE_eventPicture
+
+	trigger = {
+		religion = freyite
+		OR = {
+			has_country_modifier = -4_prosperity
+			has_country_modifier = -3_prosperity
+			has_country_modifier = -2_prosperity
+			has_country_modifier = -1_prosperity
+			has_country_modifier = 0_prosperity
+			has_country_modifier = 1_prosperity
+			has_country_modifier = 2_prosperity
+			has_country_modifier = 3_prosperity
+			has_country_modifier = 4_prosperity
+			has_country_modifier = 5_prosperity	
+		}	
+		is_at_war = yes
+	}
+
+	mean_time_to_happen = {
+		months = 12
+	}
+
+	option = {
+		name = alfredofcanterbury.7.a
+		if = {
+			limit = {
+				has_country_modifier = 5_prosperity
+				NOT = {
+					has_country_modifier = prosperity_debug
+				}
+			}
+			remove_country_modifier = 5_prosperity
+			add_country_modifier = {
+				name = 4_prosperity
+				duration = -1
+			}
+			hidden_effect = {
+				add_country_modifier = {
+					name = prosperity_debug
+					duration = 1
+				}
+			}
+		}
+		if = {
+			limit = {
+				has_country_modifier = 4_prosperity
+				NOT = {
+					has_country_modifier = prosperity_debug
+				}
+			}
+			remove_country_modifier = 4_prosperity
+			add_country_modifier = {
+				name = 3_prosperity
+				duration = -1
+			}
+			hidden_effect = {
+				add_country_modifier = {
+					name = prosperity_debug
+					duration = 1
+				}
+			}
+		}
+		if = {
+			limit = {
+				has_country_modifier = 3_prosperity
+				NOT = {
+					has_country_modifier = prosperity_debug
+				}
+			}
+			remove_country_modifier = 3_prosperity
+			add_country_modifier = {
+				name = 2_prosperity
+				duration = -1
+			}
+			hidden_effect = {
+				add_country_modifier = {
+					name = prosperity_debug
+					duration = 1
+				}
+			}
+		}
+		if = {
+			limit = {
+				has_country_modifier = 2_prosperity
+				NOT = {
+					has_country_modifier = prosperity_debug
+				}
+			}
+			remove_country_modifier = 2_prosperity
+			add_country_modifier = {
+				name = 1_prosperity
+				duration = -1
+			}
+			hidden_effect = {
+				add_country_modifier = {
+					name = prosperity_debug
+					duration = 1
+				}
+			}
+		}	
+		if = {
+			limit = {
+				has_country_modifier = 1_prosperity
+				NOT = {
+					has_country_modifier = prosperity_debug
+				}
+			}
+			remove_country_modifier = 1_prosperity
+			add_country_modifier = {
+				name = 0_prosperity
+				duration = -1
+			}
+			hidden_effects = {
+				add_country_modifier = {
+					name = prosperity_debug
+					duration = 1
+				}
+			}
+		}
+		if = {
+			limit = {
+				has_country_modifier = 0_prosperity
+				NOT = {
+					has_country_modifier = prosperity_debug
+				}
+			}
+			remove_country_modifier = 0_prosperity
+			add_country_modifier = {
+				name = -1_prosperity
+				duration = -1
+			}
+			hidden_effect = {
+				add_country_modifier = {
+					name = prosperity_debug
+					duration = 1
+				}
+			}
+		}	
+		if = {
+			limit = {
+				has_country_modifier = -1_prosperity
+				NOT = {
+					has_country_modifier = prosperity_debug
+				}
+			}
+			remove_country_modifier = -1_prosperity
+			add_country_modifier = {
+				name = -2_prosperity
+				duration = -1
+			}
+			hidden_effect = {
+				add_country_modifier = {
+					name = prosperity_debug
+					duration = 1
+				}
+			}
+		}
+		if = {
+			limit = {
+				has_country_modifier = -2_prosperity
+				NOT = {
+					has_country_modifier = prosperity_debug
+				}
+			}
+			remove_country_modifier = -2_prosperity
+			add_country_modifier = {
+				name = -3_prosperity
+				duration = -1
+			}
+			hidden_effect = {
+				add_country_modifier = {
+					name = prosperity_debug
+					duration = 1
+				}
+			}
+		}	
+		if = {
+			limit = {
+				has_country_modifier = -3_prosperity
+				NOT = {
+					has_country_modifier = prosperity_debug
+				}
+			}
+			remove_country_modifier = -3_prosperity
+			add_country_modifier = {
+				name = -4_prosperity
+				duration = -1
+			}
+			hidden_effect = {
+				add_country_modifier = {
+					name = prosperity_debug
+					duration = 1
+				}
+			}
+		}	
+		if = {
+			limit = {
+				has_country_modifier = -4_prosperity
+				NOT = {
+					has_country_modifier = prosperity_debug
+				}
+			}
+			remove_country_modifier = -4_prosperity
+			add_country_modifier = {
+				name = -5_prosperity
+				duration = -1
+			}
+			hidden_effect = {
+				add_country_modifier = {
+					name = prosperity_debug
+					duration = 1
+				}
+			}
+		}
+	}
+}		
+	

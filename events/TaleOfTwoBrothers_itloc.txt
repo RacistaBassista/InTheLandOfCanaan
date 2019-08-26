@@ -1,0 +1,581 @@
+namespace = taleoftwobrothers
+
+country_event = {
+	id = taleoftwobrothers.1
+	title = taleoftwobrothers.1.t
+	desc = taleoftwobrothers.1.d
+	picture = EXPLORERS_eventPicture
+
+	trigger = {
+		tag = LIT
+		has_ruler = "Kazimeras IV"
+		religion = romuva
+	}
+
+	mean_time_to_happen = {
+		months = 120
+	}
+
+	fire_only_once = yes
+
+	major = yes
+
+	option = {
+		name = taleoftwobrothers.1.a
+		ai_chance = { factor = 0.17 }
+		define_heir = {
+			name = "Kazimeras"
+			monarch_name = "Kazimeras V"
+			dynasty = "Gediminai"
+			age = 21
+			fixed = yes
+			religion = romuva
+		}
+		add_country_modifier = {
+			name = "royal_family_tension"
+			duration = 7300
+		}
+	}
+	option = {
+		name = taleoftwobrothers.1.b
+		ai_chance = { factor = 0.33 }
+		define_heir = {
+			name = "Kazimeras"
+			monarch_name = "Kazimeras V"
+			dynasty = "Gediminai"
+			age = 21
+			fixed = yes
+			religion = romuva
+		}
+	}
+	option = {
+		name = taleoftwobrothers.1.c
+		ai_chance = { factor = 0 }
+		add_stability = -1
+	}
+	option = {
+		name = taleoftwobrothers.1.da
+		ai_chance = { factor = 0.33 }
+		define_heir = {
+			name = "Aleksandras"
+			monarch_name = "Aleksandras I"
+			dynasty = "Gediminai"
+			age = 19
+			fixed = yes
+			religion = mahayana
+		}
+	}
+	option = {
+		name = taleoftwobrothers.1.a
+		ai_chance = { factor = 0.17 }
+		define_heir = {
+			name = "Aleksandras"
+			monarch_name = "Aleksandras I"
+			dynasty = "Gediminai"
+			age = 19
+			fixed = yes
+			religion = mahayana
+		}
+		add_country_modifier = {
+			name = "royal_family_tension"
+			duration = 7300
+		}
+	}
+}
+
+country_event = {
+	id = taleoftwobrothers.2
+	title = taleoftwobrothers.2.t
+	desc = taleoftwobrothers.2.d
+	picture = ASSASSINATION_eventPicture
+
+	trigger = {
+		tag = LIT
+		OR = {
+			has_heir = "Kazimeras"
+			has_heir = "Aleksandras"
+		}
+		has_ruler = "Kazimeras IV"
+	}
+
+	mean_time_to_happen = {
+		months = 120
+		modifier = {
+			factor = 0.5
+			has_country_modifier = royal_family_tension
+		}
+	}
+
+	fire_only_once = yes
+
+	option = {
+		name = taleoftwobrothers.2.a
+		add_stability = -1
+		if = {
+			limit = {
+				has_heir = "Kazimeras"
+			}
+			kill_heir = yes
+			define_heir = {
+				name = "Aleksandras"
+				monarch_name = "Aleksandras I"
+				dynasty = "Gediminai"
+				age = 29
+				fixed = yes
+				religion = mahayana
+			}
+			hidden_effect = {
+				add_country_modifier = {
+					name = "kazimeras_dead"
+					duration = -1
+				}
+			}
+		}
+		if = {
+			limit = {
+				has_heir = "Aleksandras"
+			}
+			kill_heir = yes
+			define_heir = {
+				name = "Kazimeras"
+				monarch_name = "Kazimeras V"
+				dynasty = "Gediminai"
+				age = 31
+				fixed = yes
+				religion = romuva
+			}
+			hidden_effect = {
+				add_country_modifier = {
+					name = "aleksandras_dead"
+					duration = -1
+				}
+			}
+		}
+	}
+
+	option = {
+		name = taleoftwobrothers.2.b
+		add_stability = 1
+	}
+}
+
+country_event = {
+	id = taleoftwobrothers.3
+	title = taleoftwobrothers.3.t
+	desc = taleoftwobrothers.3.d
+	picture = BATTLE_eventPicture
+
+	trigger = {
+		tag = LIT
+		NOT = {
+			has_ruler = "Kazimeras IV"
+			has_country_modifier = kazimeras_dead
+			has_country_modifier = aleksandras_dead
+		}
+		OR = {
+			has_ruler = "Kazimeras V"
+			has_ruler = "Aleksandras I"
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	fire_only_once = yes
+
+	option = {
+		name = taleoftwobrothers.3.a
+		if = {
+			limit = {
+				has_ruler = "Kazimeras V"
+			}
+			custom_tooltip = taleoftwobrothers.3.a.tr
+		}
+		if = {
+			limit = {
+				has_ruler = "Aleksandras I"
+			}
+			custom_tooltip = taleoftwobrothers.3.a.tb
+		}
+		hidden_effect = {
+			every_known_country = {
+				country_event = {
+					id = taleoftwobrothers.5
+				}
+			}
+			if = {
+				limit = {
+					has_ruler = "Kazimeras V"
+				}
+				every_owned_province = {
+					limit = {
+						NOT = {
+							religion = romuva
+						}
+					}
+					cede_province = VOL
+					add_core = VOL
+				}
+				272 = {
+					add_core = VOL
+				}
+				VOL = {
+					define_ruler = {
+						name = "Aleksandras I"
+						dynasty = "Gediminai"
+						culture = lithuanian
+						religion = mahayana
+					}
+					change_religion = mahayana
+					declare_war_with_cb = {
+						who = ROOT
+						casus_belli = cb_restore_personal_union
+					}
+					add_country_modifier = {
+						name = "buddhism_tolerance"
+						duration = -1
+					}
+				}
+			}
+			if = {
+				limit = {
+					has_ruler = "Aleksandras I"
+				}
+				every_owned_province = {
+					limit = {
+						religion = romuva
+						NOT = {
+							province_id = 272
+						}
+					}
+					cede_province = LVA
+					add_core = LVA
+				}
+				change_religion = mahayana
+				add_country_modifier = {
+					name = "buddhism_tolerance"
+					duration = -1
+				}
+				272 = {
+					add_core = LVA
+				}
+				LVA = {
+					define_ruler = {
+						name = "Kazimeras V"
+						dynasty = "Gediminai"
+						culture = lithuanian
+						religion = romuva
+					}
+					change_religion = romuva
+					declare_war_with_cb = {
+						who = ROOT
+						casus_belli = cb_restore_personal_union
+					}
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = taleoftwobrothers.4
+	title = taleoftwobrothers.4.t
+	desc = taleoftwobrothers.4.d	
+	picture = CONQUEST_eventPicture
+
+	trigger = {
+		is_at_war = no
+		OR = {
+			tag = LVA
+			tag = VOL
+			tag = LIT
+		}
+		OR = {
+			LVA = {
+				exists = yes
+			}
+			VOL = {
+				exists = yes
+			}
+		}
+		272 = {
+			country_or_non_sovereign_subject_holds = ROOT
+		}
+		LIT = {
+			NOT = {
+				has_ruler = "Kazimeras IV"
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	option = {
+		name = taleoftwobrothers.4.a
+		add_prestige = 15
+		every_owned_province = {
+			limit = {
+				is_core = LVA
+			}
+			remove_core = LVA
+		}
+		every_owned_province = {
+			limit = {
+				is_core = VOL
+			}
+			remove_core = VOL
+		}
+		if = {
+			limit = {
+				OR = {
+					tag = LVA
+					tag = VOL
+				}
+			}
+			if = {
+				limit = {
+					LIT = {
+						exists = yes
+					}
+				}
+				inherit = LIT
+			}
+			change_tag = LIT
+		}
+		if = {
+			limit = {
+				tag = LIT
+			}
+			if = {
+				limit = {
+					LVA = {
+						exists = yes
+					}
+				}
+				inherit = LVA
+			}
+			if = {
+				limit = {
+					VOL = {
+						exists = yes
+					}
+				}
+				inherit = VOL
+			}
+		}
+	}
+}
+
+country_event = {
+	id = taleoftwobrothers.5
+	title = taleoftwobrothers.5.t
+	desc = taleoftwobrothers.5.d
+	picture = BATTLE_eventPicture
+
+	is_triggered_only = yes
+
+	option = {
+		name = taleoftwobrothers.5.a
+	}
+}
+
+country_event = {
+	id = taleoftwobrothers.6
+	title = taleoftwobrothers.6.t
+	desc = taleoftwobrothers.6.d
+	picture = BUDDHA_eventPicture
+
+	trigger = {
+		tag = LIT
+		has_ruler = "Aleksandras I"
+		has_country_modifier = kazimeras_dead
+	}
+
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	fire_only_once = yes
+
+	option = {
+		name = taleoftwobrothers.6.a
+		ai_chance = { factor = 0.8 }
+		change_religion = mahayana
+		add_country_modifier = {
+			name = "buddhism_tolerance"
+			duration = -1
+		}
+		random_owned_province = {
+			limit = {
+				religion = buddhism
+			}
+			spawn_rebels = {
+				type = buddhism_rebels
+				size = 3
+			}
+		}
+		random_owned_province = {
+			limit = {
+				religion = romuva
+			}
+			spawn_rebels = {
+				type = romuva_rebels
+				size = 3
+			}
+		}
+		random_owned_province = {
+			limit = {
+				religion = romuva
+			}
+			spawn_rebels = {
+				type = romuva_rebels
+				size = 3
+			}
+		}
+	}
+
+	option = {
+		name = taleoftwobrothers.6.b
+		ai_chance = { factor = 0.2 }
+		change_religion = buddhism
+		add_country_modifier = {
+			name = "buddhism_tolerance"
+			duration = -1
+		}
+		random_owned_province = {
+			limit = {
+				religion = mahayana
+			}
+			spawn_rebels = {
+				type = mahayana_rebels
+				size = 3
+			}
+		}
+		random_owned_province = {
+			limit = {
+				religion = romuva
+			}
+			spawn_rebels = {
+				type = romuva_rebels
+				size = 3
+			}
+		}
+		random_owned_province = {
+			limit = {
+				religion = romuva
+			}
+			spawn_rebels = {
+				type = romuva_rebels
+				size = 3
+			}
+		}
+	}
+}
+
+country_event = {
+	id = taleoftwobrothers.7
+	title = taleoftwobrothers.7.t
+	desc = taleoftwobrothers.7.d
+	picture = PRAYING_eventPicture
+
+	trigger = {
+		tag = LIT
+		has_ruler = "Kazimeras V"
+		has_country_modifier = aleksandras_dead
+	}
+
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	fire_only_once = yes
+
+	option = {
+		name = taleoftwobrothers.7.a
+		random_owned_province = {
+			limit = {
+				religion = buddhism
+			}
+			spawn_rebels = {
+				type = buddhism_rebels
+				size = 3
+			}
+		}
+		random_owned_province = {
+			limit = {
+				religion = mahayana
+			}
+			spawn_rebels = {
+				type = mahayana_rebels
+				size = 3
+			}
+		}
+		random_owned_province = {
+			limit = {
+				religion = mahayana
+			}
+			spawn_rebels = {
+				type = mahayana_rebels
+				size = 3
+			}
+		}
+	}
+}
+
+country_event = {
+	id = taleoftwobrothers.8
+	title = taleoftwobrothers.8.t
+	desc = taleoftwobrothers.8.d
+	picture = MILITARY_CAMP_eventPicture
+
+	trigger = {
+		tag = HLR
+	}
+
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	fire_only_once = yes
+
+	option = {
+		name = taleoftwobrothers.8.a
+		if = {
+			limit = {
+				tag = LVA
+			}
+			infantry = ROOT
+			infantry = ROOT
+			infantry = ROOT
+			infantry = ROOT
+			infantry = ROOT
+			infantry = ROOT
+			infantry = ROOT
+			cavalry = ROOT
+			cavalry = ROOT
+			cavalry = ROOT
+			cavalry = ROOT
+		}
+		if = {
+			limit = {
+				tag = VOL
+			}
+			infantry = ROOT
+			infantry = ROOT
+			infantry = ROOT
+			infantry = ROOT
+			infantry = ROOT
+			infantry = ROOT
+			infantry = ROOT
+			cavalry = ROOT
+			cavalry = ROOT
+			cavalry = ROOT
+			cavalry = ROOT
+		}
+	}
+}
+			
+			
