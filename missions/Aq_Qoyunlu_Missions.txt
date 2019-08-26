@@ -1,0 +1,273 @@
+akk_missions = {
+	slot = 1
+	generic = no
+	ai = yes
+	potential = {	
+		NOT = { map_setup = map_setup_random }
+		OR = {
+			tag = CIR
+			tag = GAZ
+		}
+	}
+	has_country_shield = yes
+
+	destroy_ayyubids = {
+		icon = mission_impaled_soldies
+		position = 1
+		required_missions = {  }
+		trigger = {
+			OR = {
+				NOT = {
+					guaranteed_by = ARM
+				}
+				AND = {
+					army_size_percentage = 1
+					is_year = 1450
+				}
+			}
+		}
+		effect = {
+			if = {
+				limit = {
+					guaranteed_by = ARM
+				}
+				if = {
+					limit = {
+						tag = CIR
+					}
+					ARM = {
+						country_event = {
+							id = 9962
+						}
+					}
+				}
+				if = {
+					limit = {
+						tag = GAZ
+					}
+					ARM = {
+						country_event = {
+							id = 9963
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					tag = CIR
+					imereti_area = {
+						type = all
+						add_province_modifier = {
+							name = "caucasian_border_raids"
+							duration = 365000
+						}
+					}
+					kartli_kakheti_area = {
+						type = all
+						add_province_modifier = {
+							name = "caucasian_border_raids"
+							duration = 365000
+						}
+					}
+					dagestan_area = {
+						type = all
+						add_permanent_claim = CIR
+					}
+				}
+			}
+			if = {
+				limit = {
+					tag = GAZ
+					shirvan_area = {
+						type = all
+						add_province_modifier = {
+							name = "caucasian_border_raids"
+							duration = 365000
+						}
+					}
+					circassia_area = {
+						type = all
+						add_permanent_claim = GAZ
+					}
+				}
+			}
+		}
+	}
+	defeat_black_sheep = {
+		icon = mission_non-western_cavalry_raid
+		required_missions = { destroy_ayyubids }
+		provinces_to_highlight = {
+			OR = {
+				area = dagestan_area
+				area = circassia_area
+			}
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		trigger = {
+			if = {
+				limit = {
+					tag = CIR
+				}
+				dagestan_area = {
+					type = all
+					country_or_non_sovereign_subject_holds = ROOT
+				}
+			}
+			if = {
+				limit = {
+					tag = GAZ
+				}
+				circassia_area = {
+					type = all
+					country_or_non_sovereign_subject_holds = ROOT
+				}
+			}
+		}
+		effect = {
+			astrakhan_area = {
+				type = all
+				add_permanent_claim = ROOT
+			}
+			azov_area = {
+				type = all
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	it_takes_a_caucasian = {
+		icon = mission_unite_home_region
+		required_missions = { defeat_black_sheep }
+		provinces_to_highlight = {
+			OR = {
+				area = astrakhan_area
+				area = azov_area
+			}
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		trigger = {
+			astrakhan_area = {
+				type = all	
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			azov_area = {
+				type = all	
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			caucasia_region = {
+				type = all
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	to_beat_a_caucasian = {
+		icon = mission_empire
+		required_missions = { it_takes_a_caucasian }
+		provinces_to_highlight = {
+			region = caucasia_region
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		trigger = {
+			caucasia_region = {
+				type = all	
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			add_prestige = 40
+			set_government_rank = 3
+			change_government = republic
+			add_government_reform = lottery_reform
+		}
+	}
+}
+
+akk_missions_2 = {
+	slot = 5
+	generic = no
+	ai = yes
+	potential = {
+		NOT = { map_setup = map_setup_random }
+		tag = ARM
+	}
+	has_country_shield = yes
+
+	conquer_iraq_akk = {
+		icon = mission_high_income
+		required_missions = { }
+		position = 1
+		trigger = {
+			has_country_modifier = western_direction
+			377 = {
+				is_strongest_trade_power = ROOT
+			}
+		}
+		effect = {
+			add_country_modifier = {
+				name = "mediterranean_ambition"
+				duration = 7300
+			}
+		}
+	}
+	invade_persia_akk = {
+		icon = mission_galleys_in_port
+		required_missions = { conquer_iraq_akk }
+		trigger = {
+			377 = {
+				is_strongest_trade_power = ROOT
+			}
+			1320 = {
+				is_strongest_trade_power = ROOT
+			}
+			358 = {
+				is_strongest_trade_power = ROOT
+			}
+		}
+		effect = {
+			add_country_modifier = {
+				name = "competitive_advantage"
+				duration = 7300
+			}
+		}
+	}
+	conquer_the_caucasus_akk = {
+		icon = mission_conquer_50_development
+		required_missions = { invade_persia_akk }
+		trigger = {
+			377 = {
+				is_strongest_trade_power = ROOT
+			}
+			1320 = {
+				is_strongest_trade_power = ROOT
+			}
+			358 = {
+				is_strongest_trade_power = ROOT
+			}
+			4346 = {
+				is_strongest_trade_power = ROOT
+			}
+			1334 = {
+				is_strongest_trade_power = ROOT
+			}
+		}
+		effect = {
+			add_prestige = 25
+			add_country_modifier = {
+				name = "trade_efficiency"
+				duration = -1
+			}
+			add_country_modifier = {
+				name = "competitive_advantage"
+				duration = -1
+			}
+			
+		}
+	}
+}

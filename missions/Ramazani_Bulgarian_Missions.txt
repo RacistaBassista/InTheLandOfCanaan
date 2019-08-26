@@ -1,0 +1,331 @@
+ram_into_the_west_missions = {
+	slot = 1
+	generic = no
+	ai = yes
+	potential = {
+		tag = RAM
+		NOT = { map_setup = map_setup_random }
+	}
+	has_country_shield = yes
+	
+	snag_europe_mission = {
+		icon = mission_invade_island
+		required_missions = {  }
+		provinces_to_highlight = {
+			OR = {
+				province_id = 151
+				province_id = 149
+				province_id = 147
+				province_id = 146
+				province_id = 3003
+				province_id = 1773
+				province_id = 145
+			}
+			NOT = {
+				owned_by = ROOT
+			}
+		}
+		trigger = {
+			OR = {
+				151 = {
+					owned_by = ROOT
+				}
+				149 = {
+					owned_by = ROOT
+				}
+				147 = {
+					owned_by = ROOT
+				}
+				146 = {
+					owned_by = ROOT
+				}
+				3003 = {
+					owned_by = ROOT
+				}
+				1773 = {
+					owned_by = ROOT
+				}
+				145 = {
+					owned_by = ROOT
+				}
+			}
+		}
+		effect = {
+			thrace_area = {
+				type = all
+				add_permanent_claim = RAM
+			}
+			morea_area = {
+				type = all
+				add_permanent_claim = RAM
+			}
+			northern_greece_area = {
+				type = all
+				add_permanent_claim = RAM
+			}
+		}
+	}
+	
+	destroy_rome_ram = {
+		icon = mission_city_of_the_world's_desire
+		required_missions = { snag_europe_mission }
+		provinces_to_highlight = {
+			province_id = 151
+			NOT = {
+				owned_by = ROOT
+			}
+		}
+		trigger = {
+			owns_core_province = 151
+			BYZ = {
+				exists = no
+			}
+		}
+		effect = {
+			add_prestige = 15
+			bulgaria_area = {
+				type = all
+				add_permanent_claim = RAM
+			}
+		}
+	}
+	destroy_bulgaria_ram = {
+		icon = mission_crusade_for_varna
+		required_missions = { destroy_rome_ram }
+		provinces_to_highlight = {
+			area = bulgaria_area
+			NOT = {
+				owned_by = ROOT
+			}
+		}
+		trigger = {
+			bulgaria_area = {
+				type = all
+				owned_by = ROOT
+			}
+			BUL = {
+				exists = no
+			}
+		}
+		effect = {
+			balkan_region = {
+				type = all
+				add_permanent_claim = RAM
+			}
+		}
+	}
+}
+
+ram_into_the_east_missions = {
+	slot = 5
+	generic = no
+	ai = yes
+	potential = {
+		tag = RAM
+		NOT = { map_setup = map_setup_random }
+	}
+	has_country_shield = yes
+
+	tame_armenia = {
+		icon = mission_conquer_50_development
+		required_missions = { }
+		position = 1
+		provinces_to_highlight = {
+			OR = {
+				province_id = 2196
+				area = erzurum_area
+				area = imereti_area
+				area = aleppo_area
+			}
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		trigger = {
+			2196 = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			erzurum_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			imereti_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			aleppo_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			add_prestige = 5
+			add_country_modifier = {
+				name = "morale_boost"
+				duration = 7300
+			}
+			syria_area = {
+				type = all
+				add_permanent_claim = ROOT
+			}
+			palestine_area = {
+				type = all
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	sweep_syria = {
+		icon = mission_egyptian_mamluk_soldier
+		required_missions = { tame_armenia }
+		provinces_to_highlight = {
+			OR = {
+				area = syria_area
+				area = palestine_area
+			}
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		trigger = {
+			syria_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			palestine_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			egypt_region = {
+				type = all
+				add_permanent_claim = RAM
+			}
+		}
+	}
+	claim_egypt_ram = {
+		icon = mission_have_manufactories
+		required_missions = { sweep_syria }
+		provinces_to_highlight = {
+			region = egypt_region
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		trigger = {
+			egypt_region = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			add_prestige = 15
+			add_country_modifier = {
+				name = "mediterranean_ambition"
+				duration = 7300
+			}
+			move_capital = 151
+		}
+	}
+}
+
+bulgaria_missions = {
+	slot = 1
+	generic = no
+	ai = yes
+	potential = {
+		tag = BUL
+		NOT = { map_setup = map_setup_random }
+	}
+	has_country_shield = yes
+	
+	settle_reign_bul = {
+		icon = mission_eastern_european_city
+		required_missions = {  }
+		trigger = {
+			at_war = no
+			NOT = {
+				war_exhaustion = 3
+			}
+			stability = 0
+			OR = {
+				AND = {
+					is_year = 1465
+					dynasty = "Bogatyr"
+				}
+				AND = {
+					is_year = 1465
+					has_reform = tsardom
+					NOT = {
+						SER = {
+							has_ruler = "Goran I"
+						}
+					}
+				}
+			}
+			
+		}
+		effect = {
+			add_stability = 2
+			northern_greece_area = {
+				type = all
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	take_greece_bul = {
+		icon = mission_assemble_an_army
+		required_missions = { settle_reign_bul }
+		provinces_to_highlight = {
+			area = northern_greece_area
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		trigger = {
+			northern_greece_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			thrace_area = {
+				type = all
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	destroy_rome_bul = {
+		icon = mission_city_of_the_world's_desire
+		required_missions = { take_greece_bul }
+		provinces_to_highlight = {
+			area = thrace_area
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		trigger = {
+			thrace_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			add_prestige = 15
+			set_capital = 151
+		}
+	}
+	be_rome_bul = {
+		icon = mission_empire
+		required_missions = { destroy_rome_bul }
+		trigger = {
+			BYZ = {
+				exists = no
+			}
+		}
+		effect = {
+			change_tag = BYZ
+		}
+	}
+}
+

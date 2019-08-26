@@ -1,0 +1,134 @@
+bulgar_throne_serbia = {
+	slot = 5
+	generic = no
+	ai = yes
+	potential = {
+		tag = SER
+		has_ruler = "Goran I"
+	}
+	has_country_shield = yes
+
+	claim_bulgar_throne = {
+		icon = mission_noble_council
+		required_missions = { }
+		position = 1
+		trigger = {
+			OR = {
+				is_year = 1459
+				BUL = {
+					has_ruler = "Pyotr III"
+				}
+			}
+			has_ruler = "Goran I"
+		}
+		effect = {
+			custom_tooltip = claim_bulgar_throne_tt
+			add_country_modifier = {
+				name = "bul_throne_claim"
+				duration = -1
+			}
+		}
+	}
+}
+
+remove_kebab_missions = {
+	slot = 1
+	generic = no
+	ai = yes
+	potential = {
+		tag = SER
+	}
+	has_country_shield = yes
+
+	path_of_vengeance = {
+		icon = mission_have_two_subjects
+		required_missions = { }
+		position = 1
+		trigger = {
+			OR = {
+				is_year = 1545
+				bosnia_area = {
+					type = all
+					country_or_non_sovereign_subject_holds = TEU
+				}
+			}
+		}
+
+		effect = {
+			bosnia_area = {
+				type = all
+				add_permanent_claim = SER
+			}
+		}
+	}
+
+	liberate_bosnia = {
+		icon = mission_cossack_cavalry
+		required_missions = { path_of_vengeance }
+		provinces_to_highlight = {
+			area = bosnia_area
+			NOT = {
+				owner = {
+					religion = slavic
+				}
+			}
+		}
+		trigger = {
+			bosnia_area = {
+				type = all
+				owner = { religion = slavic }
+			}
+		}
+		effect = {
+			east_adriatic_coast_area = {
+				type = all
+				add_permanent_claim = SER
+			}
+		}
+	}
+
+	croatia_revenge = {
+		icon = mission_conquer_50_development
+		required_missions = { liberate_bosnia }
+		provinces_to_highlight = {
+			area = east_adriatic_coast_area
+			NOT = {
+				country_or_non_sovereign_subject_holds = SER
+			}
+		}
+		trigger = {
+			east_adriatic_coast_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = SER
+			}
+		}
+		effect = {
+			balkan_region = {
+				type = all
+				add_permanent_claim = SER
+			}
+			set_government_rank = 3
+		}
+	}
+
+	master_of_the_balkans = {
+		icon = mission_empire
+		required_missions = { croatia_revenge }
+		provinces_to_highlight = {
+			region = balkan_region
+			NOT = {
+				country_or_non_sovereign_subject_holds = SER
+			}
+		}
+		trigger = {
+			balkan_region = {
+				type = all
+				country_or_non_sovereign_subject_holds = SER
+			}
+		}
+		effect = {
+			add_prestige = 30
+			add_stability = 2
+		}
+	}
+}

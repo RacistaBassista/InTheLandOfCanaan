@@ -1,0 +1,84 @@
+saving_spain_missions = {
+	slot = 1
+	generic = no	
+	ai = yes
+	potential = {
+		tag = SPA
+	}
+	has_country_shield = yes
+
+	weather_the_storm = {
+		icon = mission_noble_council
+		required_missions = { }
+		position = 1
+		trigger = {
+			is_year = 1450
+			NOT = {
+				has_ruler = "Juan IX"
+			}
+			is_at_war = no
+		}
+		effect = {
+			add_prestige = 10
+		}
+	}
+
+	rejuvenate_administration = {
+		icon = mission_war_chest
+		required_missions = { weather_the_storm }
+		trigger = {
+			has_country_modifier = decrepit_administration
+			full_idea_group = administrative_ideas
+		}
+		effect = {
+			remove_country_modifier = decrepit_administration
+			iberia_region = {
+				type = all
+				add_permanent_claim = SPA
+			}
+		}
+	}
+
+	iberia_restored = {
+		icon = mission_monarch_in_throne_room
+		required_missions = { rejuvenate_administration }
+		provinces_to_highlight = {
+			region = iberia_region
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		trigger = {
+			iberia_region = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			add_prestige = 20
+		}
+	}
+
+	visigoth_new_world = {
+		icon = mission_trade_company_region_abroad
+		required_missions = { iberia_restored }
+		provinces_to_highlight = {
+			region = caribbean_region
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		trigger = {
+			current_age = age_of_discovery
+			ADM = 2
+			DIP = 2
+			MIL = 2
+		}
+		effect = {
+			add_country_modifier = {
+				name = "expand_colonial_territory"
+				duration = -1
+			}
+		}
+	}
+}

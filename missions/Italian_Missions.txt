@@ -1,0 +1,131 @@
+roman_restoration = {
+	slot = 1
+	generic = no
+	ai = yes
+	potential = {
+		religion = cult_of_jupiter
+		culture_group = latin
+		NOT = { tag = ROM }
+		NOT = { tag = URB }
+		NOT = { map_setup = map_setup_random }
+	}
+	has_country_shield = yes
+
+	unify_central_italy = {
+		icon = mission_italian_condottiere
+		required_missions = { }
+		provinces_to_highlight = {
+			OR = {
+				area = emilia_romagna_area
+				area = tuscany_area
+			}
+			NOT = {
+				owned_by = ROOT
+			}
+		}
+		trigger = {
+			has_country_modifier = roman_restoration_society
+			emilia_romagna_area = {
+				type = all
+				owned_by = ROOT
+			}
+			tuscany_area = {
+				type = all
+				owned_by = ROOT
+			}
+		}
+		effect = {
+			central_italy_area = {
+				type = all
+				add_permanent_claim = ROOT
+			}
+			naples_area = {
+				type = all
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+
+	reconquer_rome = {
+		icon = mission_hanseatic_city
+		required_missions = { unify_central_italy }
+		provinces_to_highlight = {
+			OR = {
+				area = central_italy_area
+				area = naples_area
+			}
+			NOT = {
+				owned_by = ROOT
+			}
+		}
+		trigger = {
+			central_italy_area = {
+				type = all
+				owned_by = ROOT
+			}
+			naples_area = {
+				type = all
+				owned_by = ROOT
+			}
+		}
+		effect = {
+			apulia_area = {
+				type = all
+				add_permanent_claim = ROOT
+			}
+			calabria_area = {
+				type = all
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+
+	finish_off_italy = {
+		icon = mission_conquer_50_development
+		required_missions = { reconquer_rome }
+		provinces_to_highlight = {
+			OR = {
+				area = apulia_area
+				area = calabria_area
+			}
+			NOT = {
+				owned_by = ROOT
+			}
+		}
+		trigger = {
+			apulia_area = {
+				type = all
+				owned_by = ROOT
+			}
+			calabria_area = {
+				type = all
+				owned_by = ROOT
+			}
+		}
+		effect = {
+			add_prestige = 25
+			add_adm_power = 200
+			add_mil_power = 200
+			add_dip_power = 200
+		}
+	}
+
+	ave_roma = {
+		icon = mission_empire
+		required_missions = { finish_off_italy }
+		trigger = {
+			adm_tech = 10
+		}
+		effect = {
+			change_tag = ROM
+			government_rank = 3
+			change_government = monarchy
+			add_government_reform = autocracy_reform
+			italy_region = {
+				type = all
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+}
+			

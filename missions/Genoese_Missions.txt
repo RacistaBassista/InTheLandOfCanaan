@@ -1,0 +1,230 @@
+journey_to_the_west = {
+	slot = 1
+	generic = no
+	ai = yes
+	potential = {
+		tag = ARM
+	}
+	has_country_shield = yes
+
+	genoa_trade_node_power = {
+		icon = mission_buddhist_monk_praying
+		required_missions = { }
+		trigger = {
+			is_year = 1454
+			NOT = {
+				overextension_percentage = 0.1
+			}
+			OR = {
+				religious_unity = 0.5
+				has_country_modifier = zirak_tolerance
+			}
+		}
+		effect = {
+			country_event = {
+				id = 9941
+			}
+		}
+	}
+	conquer_tunis_gen = {
+		icon = mission_impaled_soldies
+		required_missions = { genoa_trade_node_power }
+		position = 2
+		provinces_to_highlight = {
+			OR = {
+				area = dulkadir_area
+				area = aleppo_area
+				area = karaman_area
+				area = erzurum_area
+			}
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		trigger = {
+			has_country_modifier = western_direction
+			dulkadir_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			aleppo_area = {
+				type = all
+				owned_by = ROOT
+			}
+			karaman_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			erzurum_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			anatolia_region = {
+				type = all 
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	
+	tradenode_tunis = {
+		icon = mission_unite_home_region
+		required_missions = { conquer_tunis_gen }
+		trigger = {
+			RAM = {
+				exists = no
+			}
+			dulkadir_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			aleppo_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			karaman_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			erzurum_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			add_prestige = 25
+		}
+	}
+	tradenode_tangiers = {
+		icon = mission_italian_condottiere
+		required_missions = { tradenode_tunis }
+		
+		trigger = {
+			BYZ = {
+				exists = no
+			}
+			151 = {
+				owned_by = ROOT
+			}
+			146 = {
+				owned_by = ROOT
+			}
+			145 = {
+				owned_by = ROOT
+			}
+			320 = {
+				owned_by = ROOT
+			}
+		}
+		effect = {
+			change_tag = BYZ
+			add_prestige = -10
+		}
+	}
+}
+
+follow_our_roots = {
+	slot = 2
+	generic = no
+	ai = yes
+	potential = {
+		tag = GEN
+		NOT = { map_setup = map_setup_random }
+	}
+	has_country_shield = yes
+
+	tradenode_alexandria = {
+		icon = mission_steppe_warriors
+		required_missions = { }
+		position = 6
+		trigger = {
+			has_country_modifier = eastern_direction
+			2211 = {
+				owned_by = ROOT
+			}
+			411 = {
+				owned_by = ROOT
+			}
+			4293 = {
+				owned_by = ROOT
+			}
+			4294 = {
+				owned_by = ROOT
+			}
+		}
+		effect = {
+			iraq_arabi_area = {
+				type = all
+				add_permanent_claim = ROOT
+			}
+			basra_area = {
+				type = all
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+
+	gen_leave_the_empire = {
+		icon = mission_persian_soldiers
+		required_missions = { tradenode_alexandria }
+		trigger = {
+			iraq_arabi_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			basra_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			add_prestige = 20
+			persia_region = {
+				type = all
+				add_permanent_claim = ARM
+			}
+		}
+	}
+	tradenode_ferrara = {
+		icon = mission_monarch_in_throne_room
+		required_missions = { gen_leave_the_empire }
+		trigger = {
+			NOT = { exists = PER }
+			owns_core_province = 414		# Hamadan
+			owns_core_province = 429		# Isfahan
+			owns_core_province = 433		# Yazd
+			owns_core_province = 2213		# Qom
+			owns_core_province = 2215		# Qazvin
+			OR = {
+				owns_core_province = 426		# Amol
+				owns_core_province = 2218		# Shiraz
+			}
+			OR = {
+				owns_core_province = 416		# Tabriz
+				owns_core_province = 432		# Kerman
+				owns_core_province = 2221		# Mashhad
+			}
+		}
+		effect = {
+			change_tag = PER
+			add_prestige = 25
+			set_government_rank = 3
+			add_government_reform = english_monarchy
+			add_country_modifier = {
+				name = "centralization_modifier"
+				duration = 7300
+			}
+			country_event = {
+				id = 9942
+			}
+			hidden_effect = {
+				every_known_country = {
+					country_event = {
+						id = 9942
+					}
+				}
+			}
+		}
+	}
+}

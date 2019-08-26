@@ -1,0 +1,128 @@
+ire_conquest_1 = {
+	slot = 1
+	generic = no
+	ai = yes
+	potential = {
+		tag = SYR
+		NOT = { map_setup = map_setup_random }
+	}
+	has_country_shield = yes
+	ire_conquer_ulster = {
+		icon = mission_bedouins
+		required_missions = { }
+		provinces_to_highlight = {
+			OR = {
+				area = aleppo_area
+				area = syria_area
+				id = 407
+			}
+
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		trigger = {
+			aleppo_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			syria_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			407 = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			bahari_area = {
+				type = all
+				add_permanent_claim = SYR
+			}
+			vostani_area = {
+				type = all
+				add_permanent_claim = SYR
+			}
+			said_area = {
+				type = all
+				add_permanent_claim = SYR
+			}
+		}
+	}
+	ire_conquer_munster = {
+		icon = mission_conquer_50_development
+		required_missions = { ire_conquer_ulster }
+		provinces_to_highlight = {
+			OR = {
+				area = bahari_area
+				area = vostani_area
+				area = said_area
+			}
+
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		trigger = {
+			bahari_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			vostani_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			said_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			add_prestige = 15
+			add_country_modifier = {
+				name = "mediterranean_ambition"
+				duration = 7300
+			}
+		}
+	}
+	
+	unite_the_clans_ire = {
+		icon = mission_market_place_with_asian_traders
+		required_missions = { ire_conquer_munster }
+		trigger = {
+			358 = {
+				is_strongest_trade_power = ROOT
+			}
+			377 = {
+				is_strongest_trade_power = ROOT
+			}
+		}
+		effect = {
+			anatolia_region = {
+				type = all
+				add_permanent_claim = SYR
+			}
+		}
+	}
+	beyond_the_pale = {
+		icon = mission_empire
+		required_missions = { unite_the_clans_ire }
+		provinces_to_highlight = {
+			region = anatolia_region
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		trigger = {
+			anatolia_region = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			change_tag = AVI
+			set_capital = 4297
+			add_prestige = 30
+		}
+	}
+}

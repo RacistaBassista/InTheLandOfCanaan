@@ -1,0 +1,140 @@
+buddhist_tra = {
+	slot = 1
+	generic = no	
+	ai = yes
+	potential = {
+		tag = TRA
+	}
+	has_country_shield = yes	
+
+	follow_buddha = {
+		icon = mission_hands_praying
+		required_missions = { }
+		position = 1
+		trigger = {
+			full_idea_group = religious_ideas
+			government = theocracy
+			religion = vajrayana
+			vassal_of = RMN
+		}
+		effect = {
+			RMN = {
+				country_event = {
+					id = 9972
+				}
+			}
+		}
+	}
+
+	free_from_dacia = {
+		icon = mission_noble_council
+		required_missions = { follow_buddha }
+		trigger = {
+			NOT = {
+				vassal_of = RMN
+			}
+		}
+		effect = {
+			carpathia_region = {
+				type = all
+				add_permanent_claim = TRA
+			}
+		}
+	}
+
+	enlighten_hungary = {
+		icon = mission_build_up_to_force_limit
+		required_missions = { free_from_dacia }
+		provinces_to_highlight = {
+			region = carpathia_region
+			NOT = {
+				religion = vajrayana
+			}
+		}
+		trigger = {
+			carpathia_region = {
+				type = all
+				religion = vajrayana
+			}
+		}
+		effect = {
+			add_prestige = 20
+			add_accepted_culture = hungarian
+			change_tag = HUN
+			change_government = monarchy
+			add_government_reform = feudalism_reform
+		}
+	}
+}
+
+slavic_tra = {	
+	slot = 5
+	generic = no	
+	ai = yes
+	potential = {
+		tag = TRA
+	}
+	has_country_shield = yes
+
+	abandon_buddha = {
+		icon = mission_conquer_5_states
+		required_missions = { }
+		trigger = {
+			has_ruler = "Janos I"
+			religion = slavic
+			NOT = {
+				vassal_of = RMN
+			}
+		}
+		effect = {
+			every_known_country = {
+				limit = {
+					religion = slavic
+				}
+				country_event = {
+					id = 9973
+				}
+			}
+		}
+	}
+
+	league_of_hunyad = {
+		icon = mission_alliance
+		required_missions = { abandon_buddha }
+		trigger = {
+			any_known_country = {
+				limit = {
+					religion = slavic
+				}
+			}
+			alliance_with = ROOT
+		}
+		effect = {
+			add_stability = 2
+		}
+	}
+
+	free_our_people = {
+		icon = mission_hanseatic_city
+		required_missions = { league_of_hunyad }
+		provinces_to_highlight = {
+			culture = transylvanian
+			NOT = {
+				owned_by = ROOT
+			}
+		}
+		trigger = {
+			every_known_province = {
+				limit = {
+					culture = transylvanian
+				}	
+				owned_by = ROOT
+				at_war = no
+			}
+		}
+		effect = {
+			add_prestige = 20
+		}
+	}
+}
+		
