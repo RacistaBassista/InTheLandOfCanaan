@@ -1,0 +1,63 @@
+country_decisions = {
+
+	althing_annexation_vote = {
+		major = yes
+		potential = {
+			tag = ICE
+			is_great_power = no
+		}
+		allow = {
+			NOT = { prestige = 33 }
+			NOT = {
+				has_country_modifier = final_althing_vote
+			}			
+		}
+		effect = {
+			country_event = {
+				id = finalalthingvote.1
+			}
+			NOR = {
+				country_event = {
+					id = finalalthingvote.2
+				}
+			}
+			DAN = {
+				country_event = {
+					id = finalalthingvote.2
+				}
+			}
+			SWE = {
+				country_event = {
+					id = finalalthingvote.2
+				}
+			}
+			IRE = {
+				country_event = {
+					id = finalalthingvote.2
+				}
+			}
+			SCO = {
+				country_event = {
+					id = finalalthingvote.2
+				}
+			}
+			ENG = {
+				country_event = {
+					id = finalalthingvote.2
+				}
+			}
+			add_country_modifier = {
+				name = final_althing_vote
+				duration = -1
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				NOT = { is_year = 1464 }
+				factor = 0
+			}
+		}
+	}
+	
+}
